@@ -1,0 +1,21 @@
+---
+Name: mainsite
+After: 'framework/*','cms/*'
+---
+# YAML configuration for SilverStripe
+# See http://doc.silverstripe.org/framework/en/topics/configuration
+# Caution: Indentation through two spaces, not tabs
+SiteVersion:
+  version: 1.0
+SSViewer:
+  theme: 'simple'
+Page:
+  extensions:
+    - SocialDecorator
+    - PageDecorator
+SiteConfig:
+  extensions:
+    - CustomSiteConfig
+Page_Controller:
+  extensions:
+    - PageControllerDecorator
