@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<head>
 		<% base_tag %>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		$MetaTags(true)
 		<% include OG %>
 		<meta name="viewport" content="width=device-width">

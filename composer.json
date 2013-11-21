@@ -10,7 +10,14 @@
 		"silverstripe/taxonomy": "*",
 		"ajshort/silverstripe-gridfieldextensions": "*",
 		"phpunit/phpunit": "3.7.*",
-		"mobiledetect/mobiledetectlib": "dev-master"
+		"mobiledetect/mobiledetectlib": "dev-master",
+		"undefinedoffset/sortablegridfield": "dev-master",
+		"colymba/gridfield-gallery-theme": "dev-master",
+		"heyday/silverstripe-dataobjectpreview": "dev-master",
+		"silverstripe/gridfield-addons": "dev-master",
+		"hubertusanton/silverstripe-seo": "dev-master",
+		"kinglozzer/silverstripegmapsobject": "dev-master",
+		"purplespider/basic-news": "dev-master"
 	},
 	"config": {
 		"process-timeout": 600	
