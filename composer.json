@@ -17,7 +17,8 @@
 		"silverstripe/gridfield-addons": "dev-master",
 		"hubertusanton/silverstripe-seo": "dev-master",
 		"kinglozzer/silverstripegmapsobject": "dev-master",
-		"purplespider/basic-news": "dev-master"
+		"purplespider/basic-news": "dev-master",
+		"silverstripe/staticpublisher": "dev-master"
 	},
 	"config": {
 		"process-timeout": 600	

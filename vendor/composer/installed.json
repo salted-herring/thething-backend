@@ -1111,5 +1111,47 @@
             "news",
             "silverstripe"
         ]
+    },
+    {
+        "name": "silverstripe/staticpublisher",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/silverstripe-labs/silverstripe-staticpublisher.git",
+            "reference": "02c2e66d69473aba40c2712c2c86872e9635c5fa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-staticpublisher/zipball/02c2e66d69473aba40c2712c2c86872e9635c5fa",
+            "reference": "02c2e66d69473aba40c2712c2c86872e9635c5fa",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/cms": "~3.1",
+            "silverstripe/framework": "~3.1"
+        },
+        "time": "2013-11-03 23:10:13",
+        "type": "silverstripe-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Will Rossiter",
+                "email": "will@fullscreen.io",
+                "homepage": "http://wilr.github.com"
+            },
+            {
+                "name": "Sam Minnee",
+                "email": "sam@silverstripe.com"
+            }
+        ],
+        "description": "StaticPublisher provides an extensions for exporting a SilverStripe application to either a local or remote file systems.",
+        "keywords": [
+            "export",
+            "publisher",
+            "silverstripe-labs",
+            "static"
+        ]
     }
 ]
