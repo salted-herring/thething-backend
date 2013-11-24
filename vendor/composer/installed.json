@@ -173,495 +173,6 @@
         ]
     },
     {
-        "name": "silverstripe/googlesitemaps",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/silverstripe-labs/silverstripe-googlesitemaps.git",
-            "reference": "a2297c43ef748025ddded140d4ad4320a88fd3ea"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-googlesitemaps/zipball/a2297c43ef748025ddded140d4ad4320a88fd3ea",
-            "reference": "a2297c43ef748025ddded140d4ad4320a88fd3ea",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/framework": "~3.1"
-        },
-        "time": "2013-08-28 05:51:17",
-        "type": "silverstripe-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD"
-        ],
-        "authors": [
-            {
-                "name": "Will Rossiter",
-                "email": "will@fullscreen.io",
-                "homepage": "http://wilr.github.com"
-            }
-        ],
-        "description": "SilverStripe support for the Google Sitemaps XML system, enabling Google and other search engines to see all urls on your site. This helps your SilverStripe website rank well in search engines, and to encourage the information on your site to be discovered by Google quickly.",
-        "homepage": "https://github.com/silverstripe-labs/silverstripe-googlesitemaps",
-        "keywords": [
-            "googlesitemaps",
-            "seo",
-            "silverstripe"
-        ]
-    },
-    {
-        "name": "silverstripe/html5",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/silverstripe/silverstripe-html5.git",
-            "reference": "54fc0b86efbfc571293c75862991923c78a7f1f8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/silverstripe/silverstripe-html5/zipball/54fc0b86efbfc571293c75862991923c78a7f1f8",
-            "reference": "54fc0b86efbfc571293c75862991923c78a7f1f8",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/framework": "3.*"
-        },
-        "time": "2013-03-19 21:01:47",
-        "type": "silverstripe-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "description": "HTML5 support for SilverStripe",
-        "keywords": [
-            "HTML5",
-            "silverstripe"
-        ]
-    },
-    {
-        "name": "silverstripe/taxonomy",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/silverstripe-labs/silverstripe-taxonomy.git",
-            "reference": "64a2f4316dc8ff03142faf119e6ca96e7cf20589"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-taxonomy/zipball/64a2f4316dc8ff03142faf119e6ca96e7cf20589",
-            "reference": "64a2f4316dc8ff03142faf119e6ca96e7cf20589",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/cms": "~3.1",
-            "silverstripe/framework": "~3.1"
-        },
-        "time": "2013-10-29 23:20:14",
-        "type": "silverstripe-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Robert Curry",
-                "email": "robert@silverstripe.com"
-            }
-        ],
-        "description": "Provide extra taxonomy for cataloguing the data.",
-        "keywords": [
-            "silverstripe"
-        ]
-    },
-    {
-        "name": "colymba/gridfield-gallery-theme",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/colymba/GridFieldGalleryTheme.git",
-            "reference": "e0301ca42367a6e1300a180846cd758d1a3a81eb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/colymba/GridFieldGalleryTheme/zipball/e0301ca42367a6e1300a180846cd758d1a3a81eb",
-            "reference": "e0301ca42367a6e1300a180846cd758d1a3a81eb",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/cms": "3.*"
-        },
-        "time": "2013-08-04 13:22:52",
-        "type": "silverstripe-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD Simplified"
-        ],
-        "authors": [
-            {
-                "name": "Thierry Francois",
-                "homepage": "http://colymba.com"
-            },
-            {
-                "name": "GitHub contributors",
-                "homepage": "https://github.com/colymba/GridFieldGalleryTheme/graphs/contributors"
-            }
-        ],
-        "description": "SilverStripe 3 GridField component adding file or image thumbnail gallery view",
-        "homepage": "https://github.com/colymba/GridFieldGalleryTheme",
-        "keywords": [
-            "gridfield gallery theme",
-            "gridfield image gallery theme",
-            "gridfield theme",
-            "gridfield thumbnail",
-            "gridfield thumbnail view",
-            "silverstripe"
-        ]
-    },
-    {
-        "name": "silverstripe/gridfield-addons",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/smindel/silverstripe-GridFieldAddOns.git",
-            "reference": "6412ce18ee776ae6ef992980c01baa53a48b2be8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/smindel/silverstripe-GridFieldAddOns/zipball/6412ce18ee776ae6ef992980c01baa53a48b2be8",
-            "reference": "6412ce18ee776ae6ef992980c01baa53a48b2be8",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2",
-            "silverstripe/framework": ">=3.0.1"
-        },
-        "time": "2013-03-10 13:42:30",
-        "type": "silverstripe-module",
-        "extra": {
-            "snapshot": "https://raw.github.com/smindel/silverstripe-GridFieldAddOns/master/docs/en/_images/GridFieldEditableCells1.png"
-        },
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Andreas Piening",
-                "email": "piening@3online.de",
-                "homepage": "https://github.com/smindel/",
-                "role": "freelance developer"
-            }
-        ],
-        "description": "GridFieldAddOns is a collection of plugins for the Silverstripe GridField.",
-        "homepage": "https://github.com/smindel/silverstripe-GridFieldAddOns",
-        "keywords": [
-            "component",
-            "gridfield",
-            "silverstripe"
-        ]
-    },
-    {
-        "name": "hubertusanton/silverstripe-seo",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/hubertusanton/silverstripe-seo.git",
-            "reference": "9f95da0f87d0bad0a7a8e5e727cf9eb64e4f23c6"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/hubertusanton/silverstripe-seo/zipball/9f95da0f87d0bad0a7a8e5e727cf9eb64e4f23c6",
-            "reference": "9f95da0f87d0bad0a7a8e5e727cf9eb64e4f23c6",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/framework": "3.*"
-        },
-        "time": "2013-10-01 08:58:07",
-        "type": "silverstripe-module",
-        "extra": {
-            "installer-name": "seo",
-            "screenshots": [
-                "images/screen2.png",
-                "images/screen3.png"
-            ]
-        },
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Bart van Irsel",
-                "email": "bart@30.nl"
-            }
-        ],
-        "description": "SEO module for Silverstripe",
-        "homepage": "http://github.com/hubertusanton/silverstripe-seo",
-        "keywords": [
-            "seo",
-            "silverstripe"
-        ]
-    },
-    {
-        "name": "kinglozzer/silverstripegmapsobject",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kinglozzer/SilverStripe-GMapsObject.git",
-            "reference": "9261eb8f9671e88e89e08ff89969353dff2108c9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kinglozzer/SilverStripe-GMapsObject/zipball/9261eb8f9671e88e89e08ff89969353dff2108c9",
-            "reference": "9261eb8f9671e88e89e08ff89969353dff2108c9",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/framework": "~3.1"
-        },
-        "time": "2013-09-30 11:34:45",
-        "type": "silverstripe-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Loz Calver",
-                "email": "lozcalver@bigfork.co.uk"
-            }
-        ],
-        "description": "Add a Google Map (optionally with Streetview) to a DataObject or Page",
-        "homepage": "https://github.com/kinglozzer/SilverStripe-GMapsObject",
-        "keywords": [
-            "gmap",
-            "google",
-            "map",
-            "silverstripe",
-            "street",
-            "streetview",
-            "view"
-        ]
-    },
-    {
-        "name": "purplespider/basic-news",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/purplespider/silverstripe-basic-news.git",
-            "reference": "207c42ad70327797577eda381cd32d3f08797d0f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/purplespider/silverstripe-basic-news/zipball/207c42ad70327797577eda381cd32d3f08797d0f",
-            "reference": "207c42ad70327797577eda381cd32d3f08797d0f",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/cms": "~3.1",
-            "silverstripe/framework": "~3.1"
-        },
-        "replace": {
-            "silverstripe/basic-news": "*"
-        },
-        "time": "2013-11-21 10:56:45",
-        "type": "silverstripe-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "authors": [
-            {
-                "name": "James Cocker",
-                "email": "ssmodules@pswd.biz"
-            }
-        ],
-        "description": "Basic News Holder & News Article functionality",
-        "keywords": [
-            "article",
-            "news",
-            "silverstripe"
-        ]
-    },
-    {
-        "name": "silverstripe/staticpublisher",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/silverstripe-labs/silverstripe-staticpublisher.git",
-            "reference": "02c2e66d69473aba40c2712c2c86872e9635c5fa"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-staticpublisher/zipball/02c2e66d69473aba40c2712c2c86872e9635c5fa",
-            "reference": "02c2e66d69473aba40c2712c2c86872e9635c5fa",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/cms": "~3.1",
-            "silverstripe/framework": "~3.1"
-        },
-        "time": "2013-11-03 23:10:13",
-        "type": "silverstripe-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "authors": [
-            {
-                "name": "Will Rossiter",
-                "email": "will@fullscreen.io",
-                "homepage": "http://wilr.github.com"
-            },
-            {
-                "name": "Sam Minnee",
-                "email": "sam@silverstripe.com"
-            }
-        ],
-        "description": "StaticPublisher provides an extensions for exporting a SilverStripe application to either a local or remote file systems.",
-        "keywords": [
-            "export",
-            "publisher",
-            "silverstripe-labs",
-            "static"
-        ]
-    },
-    {
-        "name": "ajshort/silverstripe-gridfieldextensions",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ajshort/silverstripe-gridfieldextensions.git",
-            "reference": "5eec0f70b456d797a5e46b19b3c3aac597cb3259"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ajshort/silverstripe-gridfieldextensions/zipball/5eec0f70b456d797a5e46b19b3c3aac597cb3259",
-            "reference": "5eec0f70b456d797a5e46b19b3c3aac597cb3259",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/framework": "~3.1"
-        },
-        "time": "2013-11-22 04:19:50",
-        "type": "silverstripe-module",
-        "extra": {
-            "installer-name": "gridfieldextensions",
-            "screenshots": [
-                "docs/en/_images/editable-rows.png",
-                "docs/en/_images/add-existing-search.png"
-            ]
-        },
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Andrew Short",
-                "email": "andrewjshort@gmail.com"
-            }
-        ],
-        "description": "A collection of useful grid field components",
-        "homepage": "http://github.com/ajshort/silverstripe-gridfieldextensions",
-        "keywords": [
-            "gridfield",
-            "silverstripe"
-        ]
-    },
-    {
-        "name": "undefinedoffset/sortablegridfield",
-        "version": "0.3.1",
-        "version_normalized": "0.3.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/UndefinedOffset/SortableGridField.git",
-            "reference": "8b185cae3bc4fd580668abfa45815b7403d15e1d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/8b185cae3bc4fd580668abfa45815b7403d15e1d",
-            "reference": "8b185cae3bc4fd580668abfa45815b7403d15e1d",
-            "shasum": ""
-        },
-        "require": {
-            "composer/installers": "*",
-            "silverstripe/framework": "3.*"
-        },
-        "time": "2013-10-29 23:14:58",
-        "type": "silverstripe-module",
-        "extra": {
-            "installer-name": "sortablegridfield"
-        },
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Ed Chipman",
-                "homepage": "http://www.edchipman.ca",
-                "role": "Developer"
-            }
-        ],
-        "description": "Adds drag and drop functionality to SilverStripe 3.0's GridField",
-        "keywords": [
-            "gridfield",
-            "silverstripe"
-        ]
-    },
-    {
-        "name": "heyday/silverstripe-dataobjectpreview",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/heyday/silverstripe-dataobjectpreview.git",
-            "reference": "f5650d5ba272dfdcdf6282062ef159b6e65527c8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/heyday/silverstripe-dataobjectpreview/zipball/f5650d5ba272dfdcdf6282062ef159b6e65527c8",
-            "reference": "f5650d5ba272dfdcdf6282062ef159b6e65527c8",
-            "shasum": ""
-        },
-        "require": {
-            "composer/installers": "~1.0"
-        },
-        "time": "2013-07-24 00:07:43",
-        "type": "silverstripe-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Cam Spiers",
-                "email": "cameron@heyday.co.nz",
-                "role": "Developer"
-            }
-        ],
-        "description": "Allows preview of dataobjects in GridField"
-    },
-    {
         "name": "phpunit/php-timer",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1152,6 +663,495 @@
             "mobile detect",
             "mobile detector",
             "php mobile detect"
+        ]
+    },
+    {
+        "name": "ajshort/silverstripe-gridfieldextensions",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ajshort/silverstripe-gridfieldextensions.git",
+            "reference": "5eec0f70b456d797a5e46b19b3c3aac597cb3259"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ajshort/silverstripe-gridfieldextensions/zipball/5eec0f70b456d797a5e46b19b3c3aac597cb3259",
+            "reference": "5eec0f70b456d797a5e46b19b3c3aac597cb3259",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/framework": "~3.1"
+        },
+        "time": "2013-11-22 04:19:50",
+        "type": "silverstripe-module",
+        "extra": {
+            "installer-name": "gridfieldextensions",
+            "screenshots": [
+                "docs/en/_images/editable-rows.png",
+                "docs/en/_images/add-existing-search.png"
+            ]
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Andrew Short",
+                "email": "andrewjshort@gmail.com"
+            }
+        ],
+        "description": "A collection of useful grid field components",
+        "homepage": "http://github.com/ajshort/silverstripe-gridfieldextensions",
+        "keywords": [
+            "gridfield",
+            "silverstripe"
+        ]
+    },
+    {
+        "name": "colymba/gridfield-gallery-theme",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/colymba/GridFieldGalleryTheme.git",
+            "reference": "e0301ca42367a6e1300a180846cd758d1a3a81eb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/colymba/GridFieldGalleryTheme/zipball/e0301ca42367a6e1300a180846cd758d1a3a81eb",
+            "reference": "e0301ca42367a6e1300a180846cd758d1a3a81eb",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/cms": "3.*"
+        },
+        "time": "2013-08-04 13:22:52",
+        "type": "silverstripe-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD Simplified"
+        ],
+        "authors": [
+            {
+                "name": "Thierry Francois",
+                "homepage": "http://colymba.com"
+            },
+            {
+                "name": "GitHub contributors",
+                "homepage": "https://github.com/colymba/GridFieldGalleryTheme/graphs/contributors"
+            }
+        ],
+        "description": "SilverStripe 3 GridField component adding file or image thumbnail gallery view",
+        "homepage": "https://github.com/colymba/GridFieldGalleryTheme",
+        "keywords": [
+            "gridfield gallery theme",
+            "gridfield image gallery theme",
+            "gridfield theme",
+            "gridfield thumbnail",
+            "gridfield thumbnail view",
+            "silverstripe"
+        ]
+    },
+    {
+        "name": "silverstripe/gridfield-addons",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/smindel/silverstripe-GridFieldAddOns.git",
+            "reference": "6412ce18ee776ae6ef992980c01baa53a48b2be8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/smindel/silverstripe-GridFieldAddOns/zipball/6412ce18ee776ae6ef992980c01baa53a48b2be8",
+            "reference": "6412ce18ee776ae6ef992980c01baa53a48b2be8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "silverstripe/framework": ">=3.0.1"
+        },
+        "time": "2013-03-10 13:42:30",
+        "type": "silverstripe-module",
+        "extra": {
+            "snapshot": "https://raw.github.com/smindel/silverstripe-GridFieldAddOns/master/docs/en/_images/GridFieldEditableCells1.png"
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Andreas Piening",
+                "email": "piening@3online.de",
+                "homepage": "https://github.com/smindel/",
+                "role": "freelance developer"
+            }
+        ],
+        "description": "GridFieldAddOns is a collection of plugins for the Silverstripe GridField.",
+        "homepage": "https://github.com/smindel/silverstripe-GridFieldAddOns",
+        "keywords": [
+            "component",
+            "gridfield",
+            "silverstripe"
+        ]
+    },
+    {
+        "name": "kinglozzer/silverstripegmapsobject",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kinglozzer/SilverStripe-GMapsObject.git",
+            "reference": "9261eb8f9671e88e89e08ff89969353dff2108c9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kinglozzer/SilverStripe-GMapsObject/zipball/9261eb8f9671e88e89e08ff89969353dff2108c9",
+            "reference": "9261eb8f9671e88e89e08ff89969353dff2108c9",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/framework": "~3.1"
+        },
+        "time": "2013-09-30 11:34:45",
+        "type": "silverstripe-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Loz Calver",
+                "email": "lozcalver@bigfork.co.uk"
+            }
+        ],
+        "description": "Add a Google Map (optionally with Streetview) to a DataObject or Page",
+        "homepage": "https://github.com/kinglozzer/SilverStripe-GMapsObject",
+        "keywords": [
+            "gmap",
+            "google",
+            "map",
+            "silverstripe",
+            "street",
+            "streetview",
+            "view"
+        ]
+    },
+    {
+        "name": "purplespider/basic-news",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/purplespider/silverstripe-basic-news.git",
+            "reference": "207c42ad70327797577eda381cd32d3f08797d0f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/purplespider/silverstripe-basic-news/zipball/207c42ad70327797577eda381cd32d3f08797d0f",
+            "reference": "207c42ad70327797577eda381cd32d3f08797d0f",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/cms": "~3.1",
+            "silverstripe/framework": "~3.1"
+        },
+        "replace": {
+            "silverstripe/basic-news": "*"
+        },
+        "time": "2013-11-21 10:56:45",
+        "type": "silverstripe-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "James Cocker",
+                "email": "ssmodules@pswd.biz"
+            }
+        ],
+        "description": "Basic News Holder & News Article functionality",
+        "keywords": [
+            "article",
+            "news",
+            "silverstripe"
+        ]
+    },
+    {
+        "name": "hubertusanton/silverstripe-seo",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hubertusanton/silverstripe-seo.git",
+            "reference": "9f95da0f87d0bad0a7a8e5e727cf9eb64e4f23c6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hubertusanton/silverstripe-seo/zipball/9f95da0f87d0bad0a7a8e5e727cf9eb64e4f23c6",
+            "reference": "9f95da0f87d0bad0a7a8e5e727cf9eb64e4f23c6",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/framework": "3.*"
+        },
+        "time": "2013-10-01 08:58:07",
+        "type": "silverstripe-module",
+        "extra": {
+            "installer-name": "seo",
+            "screenshots": [
+                "images/screen2.png",
+                "images/screen3.png"
+            ]
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Bart van Irsel",
+                "email": "bart@30.nl"
+            }
+        ],
+        "description": "SEO module for Silverstripe",
+        "homepage": "http://github.com/hubertusanton/silverstripe-seo",
+        "keywords": [
+            "seo",
+            "silverstripe"
+        ]
+    },
+    {
+        "name": "silverstripe/googlesitemaps",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/silverstripe-labs/silverstripe-googlesitemaps.git",
+            "reference": "a2297c43ef748025ddded140d4ad4320a88fd3ea"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-googlesitemaps/zipball/a2297c43ef748025ddded140d4ad4320a88fd3ea",
+            "reference": "a2297c43ef748025ddded140d4ad4320a88fd3ea",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/framework": "~3.1"
+        },
+        "time": "2013-08-28 05:51:17",
+        "type": "silverstripe-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD"
+        ],
+        "authors": [
+            {
+                "name": "Will Rossiter",
+                "email": "will@fullscreen.io",
+                "homepage": "http://wilr.github.com"
+            }
+        ],
+        "description": "SilverStripe support for the Google Sitemaps XML system, enabling Google and other search engines to see all urls on your site. This helps your SilverStripe website rank well in search engines, and to encourage the information on your site to be discovered by Google quickly.",
+        "homepage": "https://github.com/silverstripe-labs/silverstripe-googlesitemaps",
+        "keywords": [
+            "googlesitemaps",
+            "seo",
+            "silverstripe"
+        ]
+    },
+    {
+        "name": "silverstripe/html5",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/silverstripe/silverstripe-html5.git",
+            "reference": "54fc0b86efbfc571293c75862991923c78a7f1f8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/silverstripe/silverstripe-html5/zipball/54fc0b86efbfc571293c75862991923c78a7f1f8",
+            "reference": "54fc0b86efbfc571293c75862991923c78a7f1f8",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/framework": "3.*"
+        },
+        "time": "2013-03-19 21:01:47",
+        "type": "silverstripe-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "HTML5 support for SilverStripe",
+        "keywords": [
+            "HTML5",
+            "silverstripe"
+        ]
+    },
+    {
+        "name": "silverstripe/taxonomy",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/silverstripe-labs/silverstripe-taxonomy.git",
+            "reference": "64a2f4316dc8ff03142faf119e6ca96e7cf20589"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-taxonomy/zipball/64a2f4316dc8ff03142faf119e6ca96e7cf20589",
+            "reference": "64a2f4316dc8ff03142faf119e6ca96e7cf20589",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/cms": "~3.1",
+            "silverstripe/framework": "~3.1"
+        },
+        "time": "2013-10-29 23:20:14",
+        "type": "silverstripe-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Robert Curry",
+                "email": "robert@silverstripe.com"
+            }
+        ],
+        "description": "Provide extra taxonomy for cataloguing the data.",
+        "keywords": [
+            "silverstripe"
+        ]
+    },
+    {
+        "name": "undefinedoffset/sortablegridfield",
+        "version": "0.3.1",
+        "version_normalized": "0.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/UndefinedOffset/SortableGridField.git",
+            "reference": "8b185cae3bc4fd580668abfa45815b7403d15e1d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/8b185cae3bc4fd580668abfa45815b7403d15e1d",
+            "reference": "8b185cae3bc4fd580668abfa45815b7403d15e1d",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "*",
+            "silverstripe/framework": "3.*"
+        },
+        "time": "2013-10-29 23:14:58",
+        "type": "silverstripe-module",
+        "extra": {
+            "installer-name": "sortablegridfield"
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Ed Chipman",
+                "homepage": "http://www.edchipman.ca",
+                "role": "Developer"
+            }
+        ],
+        "description": "Adds drag and drop functionality to SilverStripe 3.0's GridField",
+        "keywords": [
+            "gridfield",
+            "silverstripe"
+        ]
+    },
+    {
+        "name": "heyday/silverstripe-dataobjectpreview",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/heyday/silverstripe-dataobjectpreview.git",
+            "reference": "f5650d5ba272dfdcdf6282062ef159b6e65527c8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/heyday/silverstripe-dataobjectpreview/zipball/f5650d5ba272dfdcdf6282062ef159b6e65527c8",
+            "reference": "f5650d5ba272dfdcdf6282062ef159b6e65527c8",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "time": "2013-07-24 00:07:43",
+        "type": "silverstripe-module",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Cam Spiers",
+                "email": "cameron@heyday.co.nz",
+                "role": "Developer"
+            }
+        ],
+        "description": "Allows preview of dataobjects in GridField"
+    },
+    {
+        "name": "silverstripe/staticpublisher",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/silverstripe-labs/silverstripe-staticpublisher.git",
+            "reference": "02c2e66d69473aba40c2712c2c86872e9635c5fa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-staticpublisher/zipball/02c2e66d69473aba40c2712c2c86872e9635c5fa",
+            "reference": "02c2e66d69473aba40c2712c2c86872e9635c5fa",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/cms": "~3.1",
+            "silverstripe/framework": "~3.1"
+        },
+        "time": "2013-11-03 23:10:13",
+        "type": "silverstripe-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Will Rossiter",
+                "email": "will@fullscreen.io",
+                "homepage": "http://wilr.github.com"
+            },
+            {
+                "name": "Sam Minnée",
+                "email": "sam@silverstripe.com"
+            }
+        ],
+        "description": "StaticPublisher provides an extensions for exporting a SilverStripe application to either a local or remote file systems.",
+        "keywords": [
+            "export",
+            "publisher",
+            "silverstripe-labs",
+            "static"
         ]
     }
 ]
