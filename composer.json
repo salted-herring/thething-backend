@@ -10,18 +10,19 @@
 		"silverstripe/taxonomy": "*",
 		"ajshort/silverstripe-gridfieldextensions": "*",
 		"phpunit/phpunit": "3.7.*",
-		"mobiledetect/mobiledetectlib": "dev-master",
-		"undefinedoffset/sortablegridfield": "dev-master",
-		"colymba/gridfield-gallery-theme": "dev-master",
-		"heyday/silverstripe-dataobjectpreview": "dev-master",
-		"silverstripe/gridfield-addons": "dev-master",
-		"hubertusanton/silverstripe-seo": "dev-master",
-		"kinglozzer/silverstripegmapsobject": "dev-master",
-		"purplespider/basic-news": "dev-master",
-		"silverstripe/staticpublisher": "dev-master"
+		"mobiledetect/mobiledetectlib": "2.7.*",
+		"undefinedoffset/sortablegridfield": "0.3.*",
+		"colymba/gridfield-gallery-theme": "*",
+		"heyday/silverstripe-dataobjectpreview": "1.0.*",
+		"silverstripe/gridfield-addons": "*",
+		"hubertusanton/silverstripe-seo": "*",
+		"kinglozzer/silverstripegmapsobject": "*",
+		"purplespider/basic-news": "*",
+		"silverstripe/staticpublisher": "*"
 	},
 	"config": {
-		"process-timeout": 600	
+		"process-timeout": 600,
+		"prefer-install": "dist"
 	},
 	"minimum-stability": "dev"
 }

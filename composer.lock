@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "eab353b92b4a364923e4c36c4d7db723",
+    "hash": "8893f79ec98844ef5ed6fa562ebbbe02",
     "packages": [
         {
             "name": "ajshort/silverstripe-gridfieldextensions",
@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ajshort/silverstripe-gridfieldextensions.git",
-                "reference": "56422aede25bc61c69f47d9667b50cd5fe567285"
+                "reference": "5eec0f70b456d797a5e46b19b3c3aac597cb3259"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ajshort/silverstripe-gridfieldextensions/zipball/56422aede25bc61c69f47d9667b50cd5fe567285",
-                "reference": "56422aede25bc61c69f47d9667b50cd5fe567285",
+                "url": "https://api.github.com/repos/ajshort/silverstripe-gridfieldextensions/zipball/5eec0f70b456d797a5e46b19b3c3aac597cb3259",
+                "reference": "5eec0f70b456d797a5e46b19b3c3aac597cb3259",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 "gridfield",
                 "silverstripe"
             ],
-            "time": "2013-11-14 12:43:38"
+            "time": "2013-11-22 04:19:50"
         },
         {
             "name": "colymba/gridfield-gallery-theme",
@@ -168,16 +168,16 @@
         },
         {
             "name": "heyday/silverstripe-dataobjectpreview",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heyday/silverstripe-dataobjectpreview.git",
-                "reference": "cb07876a2afe749d364a753a416b44ad1d917525"
+                "reference": "f5650d5ba272dfdcdf6282062ef159b6e65527c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heyday/silverstripe-dataobjectpreview/zipball/cb07876a2afe749d364a753a416b44ad1d917525",
-                "reference": "cb07876a2afe749d364a753a416b44ad1d917525",
+                "url": "https://api.github.com/repos/heyday/silverstripe-dataobjectpreview/zipball/f5650d5ba272dfdcdf6282062ef159b6e65527c8",
+                "reference": "f5650d5ba272dfdcdf6282062ef159b6e65527c8",
                 "shasum": ""
             },
             "require": {
@@ -196,7 +196,7 @@
                 }
             ],
             "description": "Allows preview of dataobjects in GridField",
-            "time": "2013-07-28 06:18:53"
+            "time": "2013-07-24 00:07:43"
         },
         {
             "name": "hubertusanton/silverstripe-seo",
@@ -284,7 +284,7 @@
         },
         {
             "name": "mobiledetect/mobiledetectlib",
-            "version": "dev-master",
+            "version": "2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/serbanghita/Mobile-Detect.git",
@@ -319,7 +319,7 @@
                 {
                     "name": "Serban Ghita",
                     "email": "serbanghita@gmail.com",
-                    "homepage": "http://mobiledetect.net",
+                    "homepage": "http://ghita.org",
                     "role": "Developer"
                 }
             ],
@@ -1074,7 +1074,7 @@
         },
         {
             "name": "undefinedoffset/sortablegridfield",
-            "version": "dev-master",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/UndefinedOffset/SortableGridField.git",
@@ -1120,17 +1120,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "mobiledetect/mobiledetectlib": 20,
-        "undefinedoffset/sortablegridfield": 20,
-        "colymba/gridfield-gallery-theme": 20,
-        "heyday/silverstripe-dataobjectpreview": 20,
-        "silverstripe/gridfield-addons": 20,
-        "hubertusanton/silverstripe-seo": 20,
-        "kinglozzer/silverstripegmapsobject": 20,
-        "purplespider/basic-news": 20,
-        "silverstripe/staticpublisher": 20
-    },
+    "stability-flags": [
+
+    ],
     "platform": {
         "php": ">=5.3.2"
     },
