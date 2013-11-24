@@ -8,3 +8,4 @@ silverstripe-cache
 .DS_Store
 .svn
 themes/*/.sass-cache
+vendor/.git
