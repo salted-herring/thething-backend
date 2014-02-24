@@ -34,8 +34,13 @@ class CustomSiteConfig extends DataExtension {
 				new UploadField('OGImage', 'Image')
 			)
 		);
-		$og->setStartClosed(false);
-		$fields->addFieldToTab('Root.Social', $og);
+		$og->setStartClosed(true);
+		$fields->addFieldsToTab('Root.Social', array(
+			$og,
+			new TextField('FacebookURL', 'Facebook Page'),
+			new TextField('TwitterURL', 'Twitter Profile'),
+			new TextField('PinterestURL', 'Pinterest Page')
+		));
 	}
 	
 }
