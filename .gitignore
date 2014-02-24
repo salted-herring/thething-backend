@@ -8,4 +8,16 @@ silverstripe-cache
 .DS_Store
 .svn
 themes/*/.sass-cache
-vendor/.git
+vendor
+
+googlesitemaps
+html5
+seo
+taxonomy
+gridfieldextensions
+sortablegridfield
+gridfield-addons
+gridfield-gallery-theme
+staticpublisher
+silverstripe-dataobjectpreview
+silverstripe-optimisedimage
