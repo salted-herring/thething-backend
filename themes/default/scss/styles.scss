@@ -1,15 +1,40 @@
-@import '_base', 'compass/css3', 'compass/typography/text/replacement', 'compass/utilities/general/clearfix', 'h5bp';
+@import 'base', 'compass/css3', 'compass/typography/text/replacement', 'compass/utilities/general/clearfix', 'h5bp', 'grid', 'mixins';
 
 @include h5bp-normalize;
 @include h5bp-base-styles;
 @include h5bp-helpers;
 @include h5bp-media;
 
-body,
-p,
-td,
-li {
-	font-size: ($font-size)+px;
+@import 'typography';
+
+/* ===========================
+ * Site structure
+ * =========================== */
+main {
+	display: block;
 }
 
-@import 'grid';
+/* ===========================
+ * Header
+ * =========================== */
+#main_nav {
+	ul {
+		padding: 0;
+	}
+	li {
+		display: inline;
+	}
+}
+
+/* ===========================
+ * Footer
+ * =========================== */
+#footer {
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+}
+
+
+@import 'mobile';

@@ -1,0 +1,11 @@
+body { 
+	text-rendering: optimizeLegibility;
+	@include kerning;
+}
+
+body,
+p,
+td,
+li {
+	font-size: ($font-size)+px;
+}

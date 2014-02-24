@@ -19,9 +19,9 @@
 	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %>">
 		<% include Header %>
 		
-		<div class="container">
+		<main class="container">
 			$Layout
-		</div>
+		</main>
 		
 		<% include Footer %>
 		$getRequireJS

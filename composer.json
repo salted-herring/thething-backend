@@ -17,8 +17,8 @@
 		"silverstripe/gridfield-addons": "*",
 		"hubertusanton/silverstripe-seo": "*",
 		"kinglozzer/silverstripegmapsobject": "*",
-		"purplespider/basic-news": "*",
-		"silverstripe/staticpublisher": "*"
+		"silverstripe/staticpublisher": "*",
+		"heyday/silverstripe-optimisedimage": "2.0.1"
 	},
 	"config": {
 		"process-timeout": 600,

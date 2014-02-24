@@ -1,0 +1,47 @@
+@import 'base', 'susy', 'compass/utilities/general/clearfix';
+
+.container { 
+	@include container($total-columns, $break);
+}
+
+.row {
+	@include clearfix;
+	
+	@for $i from 1 through $total-columns {
+		.grid_#{$i}:last-child { 
+			@include omega;
+		}
+	}
+}
+
+@for $i from 1 through $total-columns {
+	.grid_#{$i} { 
+		@include span-columns($i);
+	}
+}
+
+
+/* ===========================
+ * Mobile Grid
+ * =========================== */
+@include at-breakpoint(0 $total-columns 800px) {	
+	.container { 
+		@include container;
+		max-width: 100%;
+	}
+	
+	.row {
+		max-width: 100%;
+	}
+
+	@for $i from 1 through 12 {
+		.grid_#{$i} { 
+			@include span-columns(3, 12);
+			@include omega;
+			float: none;
+			margin: 0;
+			display: block;
+			max-width: 100%;
+		}
+	}
+}
