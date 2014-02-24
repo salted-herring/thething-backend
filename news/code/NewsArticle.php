@@ -26,7 +26,7 @@
 		static $description = 'An individual news item displayed on a News holder page';		
 		static $singular_name = 'News Article';
 		static $plural_name = 'News Articles'; 
-		static $icon = "basic-news/images/newspaper";
+		static $icon = "news/images/newspaper";
 		
 		public function populateDefaults() {
   			$this->Date = date('Y-m-d');

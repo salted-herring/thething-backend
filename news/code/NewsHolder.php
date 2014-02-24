@@ -19,7 +19,7 @@ class NewsHolder extends Page {
 	// Only allows certain children to be created
 	private static $allowed_children = array('NewsArticle', 'Page');
 	private static $description = 'Holds News Article pages';	   		   
-   	private static $icon = "basic-news/images/newspaper-page";
+   	private static $icon = "news/images/newspaper-page";
    	
    	public function stageChildren($showAll = false) { 
    		return $this->__call('stageChildren', array($showAll))->sort(array('MenuTitle'=>'DESC',"Created"=>'DESC')); 
