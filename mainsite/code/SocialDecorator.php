@@ -31,4 +31,21 @@ class SocialDecorator extends DataExtension {
 		$og->setStartClosed(false);
 		$fields->addFieldToTab('Root.Social', $og);
 	}
+	
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
+		
+		if($this->owner->ID && $this->owner->Title && !$this->owner->OGTitle) {
+			$this->owner->OGTitle = $this->owner->Title;
+		}
+		
+		if($this->owner->ID && $this->owner->Content && !$this->owner->OGDescription) {
+			$matches = array();
+			preg_match('(<p.*>(.*)</p>)', $this->owner->Content, $matches);
+			
+			if($matches) {
+				$this->owner->OGDescription = $matches[1];
+			}
+		}
+	}
 }

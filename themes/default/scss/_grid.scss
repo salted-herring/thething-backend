@@ -24,7 +24,7 @@
 /* ===========================
  * Mobile Grid
  * =========================== */
-@include at-breakpoint(0 $total-columns 800px) {	
+@include at-breakpoint(0 $total-columns $maxwidth) {	
 	.container { 
 		@include container;
 		max-width: 100%;

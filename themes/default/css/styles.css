@@ -194,7 +194,7 @@
 /* ===========================
  * Mobile Grid
  * =========================== */
-@media (max-width: 800px) {
+@media (max-width: 767px) {
   .container {
     max-width: 940px;
     padding-left: 10px;
@@ -855,10 +855,16 @@ main {
 /* ===========================
  * Grid
  * =========================== */
-@media (max-width: 800px) {
+@media (max-width: 767px) {
   body {
     overflow-x: hidden;
     text-rendering: optimizeSpeed;
+  }
+
+  body * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   img,
@@ -912,6 +918,19 @@ main {
 
   main {
     margin-top: 4em;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+
+  input[type="email"] {
+    width: 100%;
+  }
+
+  textarea,
+  select {
+    width: 100%;
   }
 
   #footer .row div {
