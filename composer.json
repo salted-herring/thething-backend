@@ -7,7 +7,6 @@
 		"silverstripe/framework": "3.1.2",
 		"silverstripe/googlesitemaps": "*",
 		"silverstripe/html5": "*",
-		"silverstripe/taxonomy": "*",
 		"ajshort/silverstripe-gridfieldextensions": "*",
 		"phpunit/phpunit": "3.7.*",
 		"mobiledetect/mobiledetectlib": "2.7.*",
@@ -18,7 +17,8 @@
 		"hubertusanton/silverstripe-seo": "*",
 		"kinglozzer/silverstripegmapsobject": "*",
 		"silverstripe/staticpublisher": "*",
-		"heyday/silverstripe-optimisedimage": "2.0.1"
+		"heyday/silverstripe-optimisedimage": "2.0.1",
+		"silverstripe/userforms": "dev-master"
 	},
 	"config": {
 		"process-timeout": 600,

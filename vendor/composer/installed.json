@@ -473,43 +473,6 @@
         ]
     },
     {
-        "name": "silverstripe/taxonomy",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/silverstripe-labs/silverstripe-taxonomy.git",
-            "reference": "8a16dfaf0505befc3497121de7e13958cd807344"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-taxonomy/zipball/8a16dfaf0505befc3497121de7e13958cd807344",
-            "reference": "8a16dfaf0505befc3497121de7e13958cd807344",
-            "shasum": ""
-        },
-        "require": {
-            "silverstripe/cms": "~3.1",
-            "silverstripe/framework": "~3.1"
-        },
-        "time": "2014-01-24 01:37:01",
-        "type": "silverstripe-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Robert Curry",
-                "email": "robert@silverstripe.com"
-            }
-        ],
-        "description": "Provide extra taxonomy for cataloguing the data.",
-        "keywords": [
-            "silverstripe"
-        ]
-    },
-    {
         "name": "ajshort/silverstripe-gridfieldextensions",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1208,6 +1171,45 @@
             "publisher",
             "silverstripe-labs",
             "static"
+        ]
+    },
+    {
+        "name": "silverstripe/userforms",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/silverstripe/silverstripe-userforms.git",
+            "reference": "45e4b1c037b9ab1eaab03de4154a16f31856ea9d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/45e4b1c037b9ab1eaab03de4154a16f31856ea9d",
+            "reference": "45e4b1c037b9ab1eaab03de4154a16f31856ea9d",
+            "shasum": ""
+        },
+        "require": {
+            "silverstripe/cms": ">=3.1.0",
+            "silverstripe/framework": ">=3.1.0"
+        },
+        "time": "2014-02-27 05:21:31",
+        "type": "silverstripe-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Will Rossiter",
+                "email": "will@fullscreen.io",
+                "homepage": "http://wilr.github.com"
+            }
+        ],
+        "description": "UserForms enables CMS users to create dynamic forms via a drag and drop interface and without getting involved in any PHP code",
+        "keywords": [
+            "silverstripe",
+            "userforms"
         ]
     }
 ]

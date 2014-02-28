@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9ffb33e1ee68e939303c7b03cca473f6",
+    "hash": "f1a10fde37a1c07f5653fadd62fc96b1",
     "packages": [
         {
             "name": "ajshort/silverstripe-gridfieldextensions",
@@ -994,22 +994,22 @@
             "time": "2014-02-17 03:50:28"
         },
         {
-            "name": "silverstripe/taxonomy",
+            "name": "silverstripe/userforms",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/silverstripe-labs/silverstripe-taxonomy.git",
-                "reference": "8a16dfaf0505befc3497121de7e13958cd807344"
+                "url": "https://github.com/silverstripe/silverstripe-userforms.git",
+                "reference": "45e4b1c037b9ab1eaab03de4154a16f31856ea9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe-labs/silverstripe-taxonomy/zipball/8a16dfaf0505befc3497121de7e13958cd807344",
-                "reference": "8a16dfaf0505befc3497121de7e13958cd807344",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-userforms/zipball/45e4b1c037b9ab1eaab03de4154a16f31856ea9d",
+                "reference": "45e4b1c037b9ab1eaab03de4154a16f31856ea9d",
                 "shasum": ""
             },
             "require": {
-                "silverstripe/cms": "~3.1",
-                "silverstripe/framework": "~3.1"
+                "silverstripe/cms": ">=3.1.0",
+                "silverstripe/framework": ">=3.1.0"
             },
             "type": "silverstripe-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -1018,15 +1018,17 @@
             ],
             "authors": [
                 {
-                    "name": "Robert Curry",
-                    "email": "robert@silverstripe.com"
+                    "name": "Will Rossiter",
+                    "email": "will@fullscreen.io",
+                    "homepage": "http://wilr.github.com"
                 }
             ],
-            "description": "Provide extra taxonomy for cataloguing the data.",
+            "description": "UserForms enables CMS users to create dynamic forms via a drag and drop interface and without getting involved in any PHP code",
             "keywords": [
-                "silverstripe"
+                "silverstripe",
+                "userforms"
             ],
-            "time": "2014-01-24 01:37:01"
+            "time": "2014-02-27 05:21:31"
         },
         {
             "name": "symfony/process",
@@ -1174,9 +1176,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "silverstripe/userforms": 20
+    },
     "platform": {
         "php": ">=5.3.2"
     },
