@@ -7,9 +7,18 @@ silverstripe-cache
 .idea
 .DS_Store
 .svn
-themes/*/.sass-cache
-vendor
+.tgz
 
+themes/*/.sass-cache
+themes/*/build/components
+themes/*/build/lib
+
+vendor
+framework
+cms
+
+
+## Silverstripe Modules ##
 googlesitemaps
 html5
 seo
