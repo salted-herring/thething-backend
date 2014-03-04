@@ -12,6 +12,7 @@ silverstripe-cache
 themes/*/.sass-cache
 themes/*/build/components
 themes/*/build/lib
+themes/*/build/views
 
 vendor
 framework
