@@ -19,3 +19,6 @@ SiteConfig:
 Page_Controller:
   extensions:
     - PageControllerDecorator
+ModelAdmin:
+  extensions:
+    - ModelAdminExtension
