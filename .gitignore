@@ -13,7 +13,7 @@ themes/*/.sass-cache
 themes/*/build/components
 themes/*/build/lib
 themes/*/build/views
-
+themes/*/js/components
 
 vendor
 framework
@@ -35,3 +35,4 @@ silverstripe-optimisedimage
 silverstripegmapsobject
 userforms
 gridfieldpaginatorwithshowall
+sortablegridfield
