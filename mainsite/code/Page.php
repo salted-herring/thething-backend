@@ -60,9 +60,9 @@ Requirements::themedCSS('reset');
 	}
 	
 	public function MetaTags($includeTitle = true) {
-		$tags = "";
+		$tags = parent::MetaTags();
 		if($includeTitle === true || $includeTitle == 'true') {
-			$tags .= "<title>" . $this->getTheTitle() . "</title>\n";
+			$tags = preg_replace('/(\<title\>.*\<\/title\>)/', "<title>" . $this->getTheTitle() . "</title>\n", $tags);
 		}
 		
 		$charset = ContentNegotiator::get_encoding();

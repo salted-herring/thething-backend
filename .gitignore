@@ -21,6 +21,8 @@ cms
 
 
 ## Silverstripe Modules ##
+blog
+blogcategories
 googlesitemaps
 html5
 seo
@@ -36,3 +38,4 @@ silverstripegmapsobject
 userforms
 gridfieldpaginatorwithshowall
 sortablegridfield
+widgets

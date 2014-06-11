@@ -16,6 +16,363 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `ArchiveWidget`
+--
+
+DROP TABLE IF EXISTS `ArchiveWidget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ArchiveWidget` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DisplayMode` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ArchiveWidget`
+--
+
+LOCK TABLES `ArchiveWidget` WRITE;
+/*!40000 ALTER TABLE `ArchiveWidget` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ArchiveWidget` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogCategory`
+--
+
+DROP TABLE IF EXISTS `BlogCategory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogCategory` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ClassName` enum('BlogCategory') DEFAULT 'BlogCategory',
+  `Created` datetime DEFAULT NULL,
+  `LastEdited` datetime DEFAULT NULL,
+  `URLSegment` varchar(255) DEFAULT NULL,
+  `Title` varchar(250) DEFAULT NULL,
+  `ParentID` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `ParentID` (`ParentID`),
+  KEY `ClassName` (`ClassName`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogCategory`
+--
+
+LOCK TABLES `BlogCategory` WRITE;
+/*!40000 ALTER TABLE `BlogCategory` DISABLE KEYS */;
+INSERT INTO `BlogCategory` VALUES (1,'BlogCategory','2014-06-11 11:06:56','2014-06-11 11:06:56','test','test',10),(2,'BlogCategory','2014-06-11 11:07:26','2014-06-11 11:07:26','x','x',10);
+/*!40000 ALTER TABLE `BlogCategory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogEntry`
+--
+
+DROP TABLE IF EXISTS `BlogEntry`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogEntry` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Date` datetime DEFAULT NULL,
+  `Author` mediumtext,
+  `Tags` mediumtext,
+  `SEOPageSubject` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogEntry`
+--
+
+LOCK TABLES `BlogEntry` WRITE;
+/*!40000 ALTER TABLE `BlogEntry` DISABLE KEYS */;
+INSERT INTO `BlogEntry` VALUES (11,'2014-06-11 00:55:37',NULL,'silverstripe, blog',NULL);
+/*!40000 ALTER TABLE `BlogEntry` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogEntry_BlogCategories`
+--
+
+DROP TABLE IF EXISTS `BlogEntry_BlogCategories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogEntry_BlogCategories` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `BlogEntryID` int(11) NOT NULL DEFAULT '0',
+  `BlogCategoryID` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `BlogEntryID` (`BlogEntryID`),
+  KEY `BlogCategoryID` (`BlogCategoryID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogEntry_BlogCategories`
+--
+
+LOCK TABLES `BlogEntry_BlogCategories` WRITE;
+/*!40000 ALTER TABLE `BlogEntry_BlogCategories` DISABLE KEYS */;
+INSERT INTO `BlogEntry_BlogCategories` VALUES (1,11,1),(2,11,2);
+/*!40000 ALTER TABLE `BlogEntry_BlogCategories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogEntry_Live`
+--
+
+DROP TABLE IF EXISTS `BlogEntry_Live`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogEntry_Live` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Date` datetime DEFAULT NULL,
+  `Author` mediumtext,
+  `Tags` mediumtext,
+  `SEOPageSubject` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogEntry_Live`
+--
+
+LOCK TABLES `BlogEntry_Live` WRITE;
+/*!40000 ALTER TABLE `BlogEntry_Live` DISABLE KEYS */;
+INSERT INTO `BlogEntry_Live` VALUES (11,'2014-06-11 00:55:37',NULL,'silverstripe, blog',NULL);
+/*!40000 ALTER TABLE `BlogEntry_Live` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogEntry_versions`
+--
+
+DROP TABLE IF EXISTS `BlogEntry_versions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogEntry_versions` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `Date` datetime DEFAULT NULL,
+  `Author` mediumtext,
+  `Tags` mediumtext,
+  `SEOPageSubject` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `RecordID_Version` (`RecordID`,`Version`),
+  KEY `RecordID` (`RecordID`),
+  KEY `Version` (`Version`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogEntry_versions`
+--
+
+LOCK TABLES `BlogEntry_versions` WRITE;
+/*!40000 ALTER TABLE `BlogEntry_versions` DISABLE KEYS */;
+INSERT INTO `BlogEntry_versions` VALUES (1,11,1,'2014-06-11 00:55:37',NULL,'silverstripe, blog',NULL),(2,11,2,'2014-06-11 00:55:37',NULL,'silverstripe, blog',NULL),(3,11,3,'2014-06-11 00:55:37',NULL,'silverstripe, blog',NULL);
+/*!40000 ALTER TABLE `BlogEntry_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogHolder`
+--
+
+DROP TABLE IF EXISTS `BlogHolder`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogHolder` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `AllowCustomAuthors` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `ShowFullEntry` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `OwnerID` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `OwnerID` (`OwnerID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogHolder`
+--
+
+LOCK TABLES `BlogHolder` WRITE;
+/*!40000 ALTER TABLE `BlogHolder` DISABLE KEYS */;
+INSERT INTO `BlogHolder` VALUES (10,0,0,0);
+/*!40000 ALTER TABLE `BlogHolder` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogHolder_Live`
+--
+
+DROP TABLE IF EXISTS `BlogHolder_Live`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogHolder_Live` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `AllowCustomAuthors` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `ShowFullEntry` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `OwnerID` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `OwnerID` (`OwnerID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogHolder_Live`
+--
+
+LOCK TABLES `BlogHolder_Live` WRITE;
+/*!40000 ALTER TABLE `BlogHolder_Live` DISABLE KEYS */;
+INSERT INTO `BlogHolder_Live` VALUES (10,0,0,0);
+/*!40000 ALTER TABLE `BlogHolder_Live` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogHolder_versions`
+--
+
+DROP TABLE IF EXISTS `BlogHolder_versions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogHolder_versions` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `AllowCustomAuthors` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `ShowFullEntry` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `OwnerID` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `RecordID_Version` (`RecordID`,`Version`),
+  KEY `RecordID` (`RecordID`),
+  KEY `Version` (`Version`),
+  KEY `OwnerID` (`OwnerID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogHolder_versions`
+--
+
+LOCK TABLES `BlogHolder_versions` WRITE;
+/*!40000 ALTER TABLE `BlogHolder_versions` DISABLE KEYS */;
+INSERT INTO `BlogHolder_versions` VALUES (1,10,1,0,0,0);
+/*!40000 ALTER TABLE `BlogHolder_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogTree`
+--
+
+DROP TABLE IF EXISTS `BlogTree`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogTree` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) DEFAULT NULL,
+  `LandingPageFreshness` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogTree`
+--
+
+LOCK TABLES `BlogTree` WRITE;
+/*!40000 ALTER TABLE `BlogTree` DISABLE KEYS */;
+INSERT INTO `BlogTree` VALUES (10,NULL,NULL);
+/*!40000 ALTER TABLE `BlogTree` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogTree_Live`
+--
+
+DROP TABLE IF EXISTS `BlogTree_Live`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogTree_Live` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) DEFAULT NULL,
+  `LandingPageFreshness` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogTree_Live`
+--
+
+LOCK TABLES `BlogTree_Live` WRITE;
+/*!40000 ALTER TABLE `BlogTree_Live` DISABLE KEYS */;
+INSERT INTO `BlogTree_Live` VALUES (10,NULL,NULL);
+/*!40000 ALTER TABLE `BlogTree_Live` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BlogTree_versions`
+--
+
+DROP TABLE IF EXISTS `BlogTree_versions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BlogTree_versions` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `RecordID` int(11) NOT NULL DEFAULT '0',
+  `Version` int(11) NOT NULL DEFAULT '0',
+  `Name` varchar(255) DEFAULT NULL,
+  `LandingPageFreshness` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `RecordID_Version` (`RecordID`,`Version`),
+  KEY `RecordID` (`RecordID`),
+  KEY `Version` (`Version`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BlogTree_versions`
+--
+
+LOCK TABLES `BlogTree_versions` WRITE;
+/*!40000 ALTER TABLE `BlogTree_versions` DISABLE KEYS */;
+INSERT INTO `BlogTree_versions` VALUES (1,10,1,NULL,NULL);
+/*!40000 ALTER TABLE `BlogTree_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CategoryCloudWidget`
+--
+
+DROP TABLE IF EXISTS `CategoryCloudWidget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CategoryCloudWidget` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(50) DEFAULT NULL,
+  `Limit` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CategoryCloudWidget`
+--
+
+LOCK TABLES `CategoryCloudWidget` WRITE;
+/*!40000 ALTER TABLE `CategoryCloudWidget` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CategoryCloudWidget` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `EditableFormField`
 --
 
@@ -337,7 +694,7 @@ DROP TABLE IF EXISTS `File`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `File` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ClassName` enum('Folder','Image','File','Image_Cached') DEFAULT 'Folder',
+  `ClassName` enum('Folder','File','Image','Image_Cached') DEFAULT 'Folder',
   `Created` datetime DEFAULT NULL,
   `LastEdited` datetime DEFAULT NULL,
   `Name` varchar(255) DEFAULT NULL,
@@ -525,7 +882,7 @@ CREATE TABLE `Member` (
 
 LOCK TABLES `Member` WRITE;
 /*!40000 ALTER TABLE `Member` DISABLE KEYS */;
-INSERT INTO `Member` VALUES (1,'Member','2013-11-21 09:30:34','2014-03-06 15:59:34','Default Admin',NULL,NULL,NULL,NULL,8,'2014-03-06 16:06:01',NULL,NULL,NULL,NULL,NULL,NULL,'en_US',0,NULL,NULL,0);
+INSERT INTO `Member` VALUES (1,'Member','2013-11-21 09:30:34','2014-06-11 10:57:06','Default Admin',NULL,NULL,NULL,NULL,9,'2014-06-11 13:48:43',NULL,NULL,NULL,NULL,NULL,NULL,'en_US',0,NULL,NULL,0);
 /*!40000 ALTER TABLE `Member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -693,7 +1050,7 @@ CREATE TABLE `Page` (
   `SEOPageSubject` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `OGImageID` (`OGImageID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -702,7 +1059,7 @@ CREATE TABLE `Page` (
 
 LOCK TABLES `Page` WRITE;
 /*!40000 ALTER TABLE `Page` DISABLE KEYS */;
-INSERT INTO `Page` VALUES (1,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL),(8,NULL,NULL,0,NULL),(9,'Form','$UserDefinedForm',0,NULL);
+INSERT INTO `Page` VALUES (1,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL),(8,NULL,NULL,0,NULL),(9,'Form','$UserDefinedForm',0,NULL),(10,NULL,NULL,0,NULL),(11,'SilverStripe blog module successfully installed','.',0,NULL);
 /*!40000 ALTER TABLE `Page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -723,7 +1080,7 @@ CREATE TABLE `Page_Live` (
   PRIMARY KEY (`ID`),
   KEY `OGID` (`OGID`),
   KEY `OGImageID` (`OGImageID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -732,7 +1089,7 @@ CREATE TABLE `Page_Live` (
 
 LOCK TABLES `Page_Live` WRITE;
 /*!40000 ALTER TABLE `Page_Live` DISABLE KEYS */;
-INSERT INTO `Page_Live` VALUES (1,0,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL),(9,0,'Form','$UserDefinedForm',0,NULL);
+INSERT INTO `Page_Live` VALUES (1,0,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL),(9,0,'Form','$UserDefinedForm',0,NULL),(10,0,'Blog',NULL,0,NULL),(11,0,'SilverStripe blog module successfully installed','.',0,NULL);
 /*!40000 ALTER TABLE `Page_Live` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -758,7 +1115,7 @@ CREATE TABLE `Page_versions` (
   KEY `Version` (`Version`),
   KEY `OGID` (`OGID`),
   KEY `OGImageID` (`OGImageID`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -767,7 +1124,7 @@ CREATE TABLE `Page_versions` (
 
 LOCK TABLES `Page_versions` WRITE;
 /*!40000 ALTER TABLE `Page_versions` DISABLE KEYS */;
-INSERT INTO `Page_versions` VALUES (1,6,1,0,NULL,NULL,0,NULL),(2,6,2,0,NULL,NULL,0,NULL),(3,1,2,0,NULL,NULL,0,NULL),(4,1,3,0,NULL,NULL,0,NULL),(5,1,4,0,NULL,NULL,0,NULL),(6,1,5,3,NULL,NULL,0,NULL),(7,1,6,0,NULL,NULL,0,NULL),(8,1,7,0,'xxx',NULL,0,NULL),(9,1,8,0,'home social',NULL,0,NULL),(10,1,9,0,'home social','the description',2,NULL),(11,7,1,0,NULL,NULL,0,NULL),(12,7,2,0,NULL,NULL,0,NULL),(13,8,1,0,NULL,NULL,0,NULL),(14,8,2,0,NULL,NULL,0,NULL),(15,8,3,0,NULL,NULL,0,NULL),(16,1,10,0,NULL,NULL,0,NULL),(17,9,1,0,NULL,NULL,0,NULL),(18,9,2,0,NULL,NULL,0,NULL),(19,9,3,0,'Form','$UserDefinedForm',0,NULL),(20,9,4,0,'Form','$UserDefinedForm',0,NULL),(21,1,11,0,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL),(22,1,12,0,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL),(23,1,13,0,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL);
+INSERT INTO `Page_versions` VALUES (1,6,1,0,NULL,NULL,0,NULL),(2,6,2,0,NULL,NULL,0,NULL),(3,1,2,0,NULL,NULL,0,NULL),(4,1,3,0,NULL,NULL,0,NULL),(5,1,4,0,NULL,NULL,0,NULL),(6,1,5,3,NULL,NULL,0,NULL),(7,1,6,0,NULL,NULL,0,NULL),(8,1,7,0,'xxx',NULL,0,NULL),(9,1,8,0,'home social',NULL,0,NULL),(10,1,9,0,'home social','the description',2,NULL),(11,7,1,0,NULL,NULL,0,NULL),(12,7,2,0,NULL,NULL,0,NULL),(13,8,1,0,NULL,NULL,0,NULL),(14,8,2,0,NULL,NULL,0,NULL),(15,8,3,0,NULL,NULL,0,NULL),(16,1,10,0,NULL,NULL,0,NULL),(17,9,1,0,NULL,NULL,0,NULL),(18,9,2,0,NULL,NULL,0,NULL),(19,9,3,0,'Form','$UserDefinedForm',0,NULL),(20,9,4,0,'Form','$UserDefinedForm',0,NULL),(21,1,11,0,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL),(22,1,12,0,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL),(23,1,13,0,'Home','Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bib',0,NULL),(24,10,1,0,NULL,NULL,0,NULL),(25,11,1,0,NULL,NULL,0,NULL),(26,11,2,0,'SilverStripe blog module successfully installed','.',0,NULL),(27,11,3,0,'SilverStripe blog module successfully installed','.',0,NULL);
 /*!40000 ALTER TABLE `Page_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -859,6 +1216,31 @@ CREATE TABLE `PermissionRoleCode` (
 LOCK TABLES `PermissionRoleCode` WRITE;
 /*!40000 ALTER TABLE `PermissionRoleCode` DISABLE KEYS */;
 /*!40000 ALTER TABLE `PermissionRoleCode` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `RSSWidget`
+--
+
+DROP TABLE IF EXISTS `RSSWidget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `RSSWidget` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `RSSTitle` mediumtext,
+  `RssUrl` mediumtext,
+  `NumberToShow` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `RSSWidget`
+--
+
+LOCK TABLES `RSSWidget` WRITE;
+/*!40000 ALTER TABLE `RSSWidget` DISABLE KEYS */;
+/*!40000 ALTER TABLE `RSSWidget` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1082,7 +1464,7 @@ DROP TABLE IF EXISTS `SiteTree`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SiteTree` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ClassName` enum('Page','ErrorPage','NewsArticle','UserDefinedForm','SiteTree','NewsHolder','RedirectorPage','VirtualPage') DEFAULT 'Page',
+  `ClassName` enum('Page','ErrorPage','NewsArticle','UserDefinedForm','BlogEntry','BlogHolder','SiteTree','BlogTree','NewsHolder','RedirectorPage','VirtualPage') DEFAULT 'Page',
   `Created` datetime DEFAULT NULL,
   `LastEdited` datetime DEFAULT NULL,
   `URLSegment` varchar(255) DEFAULT NULL,
@@ -1106,7 +1488,7 @@ CREATE TABLE `SiteTree` (
   KEY `ParentID` (`ParentID`),
   KEY `URLSegment` (`URLSegment`),
   KEY `ClassName` (`ClassName`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1115,7 +1497,7 @@ CREATE TABLE `SiteTree` (
 
 LOCK TABLES `SiteTree` WRITE;
 /*!40000 ALTER TABLE `SiteTree` DISABLE KEYS */;
-INSERT INTO `SiteTree` VALUES (1,'Page','2013-11-21 09:30:34','2014-03-06 16:01:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,13,0),(2,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','about-us','About Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,2,0,0,NULL,'Inherit','Inherit',NULL,1,0),(3,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','contact-us','Contact Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,3,0,0,NULL,'Inherit','Inherit',NULL,1,0),(4,'ErrorPage','2013-11-21 09:30:34','2013-11-21 09:30:34','page-not-found','Page not found',NULL,'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>',NULL,NULL,0,0,4,0,0,NULL,'Inherit','Inherit',NULL,1,0),(5,'ErrorPage','2013-11-21 09:30:35','2013-11-21 09:30:35','server-error','Server error',NULL,'<p>Sorry, there was a problem with handling your request.</p>',NULL,NULL,0,0,5,0,0,NULL,'Inherit','Inherit',NULL,1,0),(8,'NewsArticle','2013-11-22 11:04:13','2013-11-22 11:05:18','test','Test','2013-11-22: Test','<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>',NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,3,7),(9,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 17:33:27','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,4,0);
+INSERT INTO `SiteTree` VALUES (1,'Page','2013-11-21 09:30:34','2014-03-06 16:01:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,13,0),(2,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','about-us','About Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,2,0,0,NULL,'Inherit','Inherit',NULL,1,0),(3,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','contact-us','Contact Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,3,0,0,NULL,'Inherit','Inherit',NULL,1,0),(4,'ErrorPage','2013-11-21 09:30:34','2013-11-21 09:30:34','page-not-found','Page not found',NULL,'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>',NULL,NULL,0,0,4,0,0,NULL,'Inherit','Inherit',NULL,1,0),(5,'ErrorPage','2013-11-21 09:30:35','2013-11-21 09:30:35','server-error','Server error',NULL,'<p>Sorry, there was a problem with handling your request.</p>',NULL,NULL,0,0,5,0,0,NULL,'Inherit','Inherit',NULL,1,0),(8,'NewsArticle','2013-11-22 11:04:13','2013-11-22 11:05:18','test','Test','2013-11-22: Test','<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>',NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,3,7),(9,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 17:33:27','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,4,0),(10,'BlogHolder','2014-06-11 00:55:37','2014-06-11 00:55:37','blog','Blog',NULL,NULL,NULL,NULL,1,1,7,0,0,NULL,'Inherit','Inherit',NULL,1,0),(11,'BlogEntry','2014-06-11 00:55:37','2014-06-11 13:27:51','sample-blog-entry','SilverStripe blog module successfully installed',NULL,'<p>Congratulations, the SilverStripe blog module has been successfully installed. This blog entry can be safely deleted. You can configure aspects of your blog in <a href=\"admin\">the CMS</a>.</p>',NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,3,10);
 /*!40000 ALTER TABLE `SiteTree` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1209,7 +1591,7 @@ DROP TABLE IF EXISTS `SiteTree_Live`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SiteTree_Live` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ClassName` enum('Page','ErrorPage','NewsArticle','UserDefinedForm','SiteTree','NewsHolder','RedirectorPage','VirtualPage') DEFAULT 'Page',
+  `ClassName` enum('Page','ErrorPage','NewsArticle','UserDefinedForm','BlogEntry','BlogHolder','SiteTree','BlogTree','NewsHolder','RedirectorPage','VirtualPage') DEFAULT 'Page',
   `Created` datetime DEFAULT NULL,
   `LastEdited` datetime DEFAULT NULL,
   `URLSegment` varchar(255) DEFAULT NULL,
@@ -1233,7 +1615,7 @@ CREATE TABLE `SiteTree_Live` (
   KEY `ParentID` (`ParentID`),
   KEY `URLSegment` (`URLSegment`),
   KEY `ClassName` (`ClassName`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1242,7 +1624,7 @@ CREATE TABLE `SiteTree_Live` (
 
 LOCK TABLES `SiteTree_Live` WRITE;
 /*!40000 ALTER TABLE `SiteTree_Live` DISABLE KEYS */;
-INSERT INTO `SiteTree_Live` VALUES (1,'Page','2013-11-21 09:30:34','2014-03-06 16:01:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,13,0),(2,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','about-us','About Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,2,0,0,NULL,'Inherit','Inherit',NULL,1,0),(3,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','contact-us','Contact Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,3,0,0,NULL,'Inherit','Inherit',NULL,1,0),(4,'ErrorPage','2013-11-21 09:30:34','2013-11-21 09:30:34','page-not-found','Page not found',NULL,'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>',NULL,NULL,0,0,4,0,0,NULL,'Inherit','Inherit',NULL,1,0),(5,'ErrorPage','2013-11-21 09:30:35','2013-11-21 09:30:35','server-error','Server error',NULL,'<p>Sorry, there was a problem with handling your request.</p>',NULL,NULL,0,0,5,0,0,NULL,'Inherit','Inherit',NULL,1,0),(9,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 17:33:27','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,4,0);
+INSERT INTO `SiteTree_Live` VALUES (1,'Page','2013-11-21 09:30:34','2014-03-06 16:01:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,13,0),(2,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','about-us','About Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,2,0,0,NULL,'Inherit','Inherit',NULL,1,0),(3,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','contact-us','Contact Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,3,0,0,NULL,'Inherit','Inherit',NULL,1,0),(4,'ErrorPage','2013-11-21 09:30:34','2013-11-21 09:30:34','page-not-found','Page not found',NULL,'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>',NULL,NULL,0,0,4,0,0,NULL,'Inherit','Inherit',NULL,1,0),(5,'ErrorPage','2013-11-21 09:30:35','2013-11-21 09:30:35','server-error','Server error',NULL,'<p>Sorry, there was a problem with handling your request.</p>',NULL,NULL,0,0,5,0,0,NULL,'Inherit','Inherit',NULL,1,0),(9,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 17:33:27','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,4,0),(10,'BlogHolder','2014-06-11 00:55:37','2014-06-11 00:55:37','blog','Blog',NULL,NULL,NULL,NULL,1,1,7,0,0,NULL,'Inherit','Inherit',NULL,1,0),(11,'BlogEntry','2014-06-11 00:55:37','2014-06-11 13:27:51','sample-blog-entry','SilverStripe blog module successfully installed',NULL,'<p>Congratulations, the SilverStripe blog module has been successfully installed. This blog entry can be safely deleted. You can configure aspects of your blog in <a href=\"admin\">the CMS</a>.</p>',NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,3,10);
 /*!40000 ALTER TABLE `SiteTree_Live` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1286,7 +1668,7 @@ CREATE TABLE `SiteTree_versions` (
   `WasPublished` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `AuthorID` int(11) NOT NULL DEFAULT '0',
   `PublisherID` int(11) NOT NULL DEFAULT '0',
-  `ClassName` enum('Page','ErrorPage','NewsArticle','UserDefinedForm','SiteTree','NewsHolder','RedirectorPage','VirtualPage') DEFAULT 'Page',
+  `ClassName` enum('Page','ErrorPage','NewsArticle','UserDefinedForm','BlogEntry','BlogHolder','SiteTree','BlogTree','NewsHolder','RedirectorPage','VirtualPage') DEFAULT 'Page',
   `Created` datetime DEFAULT NULL,
   `LastEdited` datetime DEFAULT NULL,
   `URLSegment` varchar(255) DEFAULT NULL,
@@ -1314,7 +1696,7 @@ CREATE TABLE `SiteTree_versions` (
   KEY `ParentID` (`ParentID`),
   KEY `URLSegment` (`URLSegment`),
   KEY `ClassName` (`ClassName`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1323,7 +1705,7 @@ CREATE TABLE `SiteTree_versions` (
 
 LOCK TABLES `SiteTree_versions` WRITE;
 /*!40000 ALTER TABLE `SiteTree_versions` DISABLE KEYS */;
-INSERT INTO `SiteTree_versions` VALUES (1,1,1,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','home','Home',NULL,'<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href=\"admin/\">the CMS</a>. You can now access the <a href=\"http://doc.silverstripe.org\">developer documentation</a>, or begin <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">the tutorials.</a></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(2,2,1,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','about-us','About Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,2,0,0,NULL,'Inherit','Inherit',NULL,0),(3,3,1,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','contact-us','Contact Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,3,0,0,NULL,'Inherit','Inherit',NULL,0),(4,4,1,1,1,1,'ErrorPage','2013-11-21 09:30:34','2013-11-21 09:30:34','page-not-found','Page not found',NULL,'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>',NULL,NULL,0,0,4,0,0,NULL,'Inherit','Inherit',NULL,0),(5,5,1,1,1,1,'ErrorPage','2013-11-21 09:30:35','2013-11-21 09:30:35','server-error','Server error',NULL,'<p>Sorry, there was a problem with handling your request.</p>',NULL,NULL,0,0,5,0,0,NULL,'Inherit','Inherit',NULL,0),(6,6,1,1,1,1,'Page','2013-11-21 11:59:31','2013-11-21 11:59:31','new-page','New Page',NULL,NULL,NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,3),(7,6,2,0,1,0,'Page','2013-11-21 11:59:31','2013-11-21 12:11:12','new-page','New Page',NULL,NULL,NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,3),(8,1,2,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 12:36:26','home','Home',NULL,'<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href=\"admin/\">the CMS</a>. You can now access the <a href=\"http://doc.silverstripe.org\">developer documentation</a>, or begin <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">the tutorials.</a></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(9,1,3,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 12:36:26','home','Home',NULL,'<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href=\"admin/\">the CMS</a>. You can now access the <a href=\"http://doc.silverstripe.org\">developer documentation</a>, or begin <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">the tutorials.</a></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(10,1,4,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 12:38:50','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(11,1,5,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 12:54:38','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(12,1,6,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 14:50:36','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(13,1,7,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 17:13:41','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(14,1,8,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 17:20:42','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(15,1,9,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 17:30:18','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(16,7,1,0,1,0,'NewsHolder','2013-11-22 11:03:36','2013-11-22 11:03:36','new-news-holder','New News Holder',NULL,NULL,NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(17,7,2,1,1,1,'NewsHolder','2013-11-22 11:03:36','2013-11-22 11:03:58','news','News',NULL,'<p>Etiam porta sem malesuada magna mollis euismod. Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis.</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(18,8,1,0,1,0,'NewsArticle','2013-11-22 11:04:13','2013-11-22 11:04:13','new-news-article','New News Article','2013-11-22: New News Article',NULL,NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,7),(19,8,2,1,1,1,'NewsArticle','2013-11-22 11:04:13','2013-11-22 11:04:48','test','Test','2013-11-22: Test',NULL,NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,7),(20,8,3,1,1,1,'NewsArticle','2013-11-22 11:04:13','2013-11-22 11:05:18','test','Test','2013-11-22: Test','<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>',NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,7),(21,1,10,1,1,1,'Page','2013-11-21 09:30:34','2014-02-24 10:10:50','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>\n<p><img class=\"leftAlone\" title=\"\" src=\"assets/Uploads/_resampled/ResizedImage600316-birthday.jpg\" alt=\"birthday\" width=\"600\" height=\"316\"></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(22,9,1,0,1,0,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 10:01:53','new-user-defined-form','New User Defined Form',NULL,'$UserDefinedForm',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(23,9,2,1,1,1,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 10:02:07','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(24,9,3,0,1,0,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 17:33:27','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(25,9,4,1,1,1,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 17:33:27','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(26,1,11,0,1,0,'Page','2013-11-21 09:30:34','2014-02-28 17:36:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>\n<p><img class=\"leftAlone\" title=\"\" src=\"assets/Uploads/_resampled/ResizedImage600316-birthday.jpg\" alt=\"birthday\" width=\"600\" height=\"316\"></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(27,1,12,1,1,1,'Page','2013-11-21 09:30:34','2014-02-28 17:36:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>\n<p><img class=\"leftAlone\" title=\"\" src=\"assets/Uploads/_resampled/ResizedImage600316-birthday.jpg\" alt=\"birthday\" width=\"600\" height=\"316\"></p>\n<p><img class=\"leftAlone\" title=\"\" src=\"assets/Uploads/_resampled/ResizedImage600316-birthday.jpg\" alt=\"birthday\" width=\"600\" height=\"316\"></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(28,1,13,1,1,1,'Page','2013-11-21 09:30:34','2014-03-06 16:01:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0);
+INSERT INTO `SiteTree_versions` VALUES (1,1,1,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','home','Home',NULL,'<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href=\"admin/\">the CMS</a>. You can now access the <a href=\"http://doc.silverstripe.org\">developer documentation</a>, or begin <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">the tutorials.</a></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(2,2,1,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','about-us','About Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,2,0,0,NULL,'Inherit','Inherit',NULL,0),(3,3,1,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 09:30:34','contact-us','Contact Us',NULL,'<p>You can fill this page out with your own content, or delete it and create your own pages.<br /></p>',NULL,NULL,1,1,3,0,0,NULL,'Inherit','Inherit',NULL,0),(4,4,1,1,1,1,'ErrorPage','2013-11-21 09:30:34','2013-11-21 09:30:34','page-not-found','Page not found',NULL,'<p>Sorry, it seems you were trying to access a page that doesn\'t exist.</p><p>Please check the spelling of the URL you were trying to access and try again.</p>',NULL,NULL,0,0,4,0,0,NULL,'Inherit','Inherit',NULL,0),(5,5,1,1,1,1,'ErrorPage','2013-11-21 09:30:35','2013-11-21 09:30:35','server-error','Server error',NULL,'<p>Sorry, there was a problem with handling your request.</p>',NULL,NULL,0,0,5,0,0,NULL,'Inherit','Inherit',NULL,0),(6,6,1,1,1,1,'Page','2013-11-21 11:59:31','2013-11-21 11:59:31','new-page','New Page',NULL,NULL,NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,3),(7,6,2,0,1,0,'Page','2013-11-21 11:59:31','2013-11-21 12:11:12','new-page','New Page',NULL,NULL,NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,3),(8,1,2,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 12:36:26','home','Home',NULL,'<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href=\"admin/\">the CMS</a>. You can now access the <a href=\"http://doc.silverstripe.org\">developer documentation</a>, or begin <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">the tutorials.</a></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(9,1,3,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 12:36:26','home','Home',NULL,'<p>Welcome to SilverStripe! This is the default homepage. You can edit this page by opening <a href=\"admin/\">the CMS</a>. You can now access the <a href=\"http://doc.silverstripe.org\">developer documentation</a>, or begin <a href=\"http://doc.silverstripe.org/doku.php?id=tutorials\">the tutorials.</a></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(10,1,4,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 12:38:50','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(11,1,5,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 12:54:38','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(12,1,6,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 14:50:36','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(13,1,7,0,1,0,'Page','2013-11-21 09:30:34','2013-11-21 17:13:41','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(14,1,8,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 17:20:42','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(15,1,9,1,1,1,'Page','2013-11-21 09:30:34','2013-11-21 17:30:18','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(16,7,1,0,1,0,'NewsHolder','2013-11-22 11:03:36','2013-11-22 11:03:36','new-news-holder','New News Holder',NULL,NULL,NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(17,7,2,1,1,1,'NewsHolder','2013-11-22 11:03:36','2013-11-22 11:03:58','news','News',NULL,'<p>Etiam porta sem malesuada magna mollis euismod. Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis.</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(18,8,1,0,1,0,'NewsArticle','2013-11-22 11:04:13','2013-11-22 11:04:13','new-news-article','New News Article','2013-11-22: New News Article',NULL,NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,7),(19,8,2,1,1,1,'NewsArticle','2013-11-22 11:04:13','2013-11-22 11:04:48','test','Test','2013-11-22: Test',NULL,NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,7),(20,8,3,1,1,1,'NewsArticle','2013-11-22 11:04:13','2013-11-22 11:05:18','test','Test','2013-11-22: Test','<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>',NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,7),(21,1,10,1,1,1,'Page','2013-11-21 09:30:34','2014-02-24 10:10:50','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>\n<p><img class=\"leftAlone\" title=\"\" src=\"assets/Uploads/_resampled/ResizedImage600316-birthday.jpg\" alt=\"birthday\" width=\"600\" height=\"316\"></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(22,9,1,0,1,0,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 10:01:53','new-user-defined-form','New User Defined Form',NULL,'$UserDefinedForm',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(23,9,2,1,1,1,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 10:02:07','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(24,9,3,0,1,0,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 17:33:27','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(25,9,4,1,1,1,'UserDefinedForm','2014-02-28 10:01:53','2014-02-28 17:33:27','form-2','Form',NULL,'<p>$UserDefinedForm</p>',NULL,NULL,1,1,6,0,0,NULL,'Inherit','Inherit',NULL,0),(26,1,11,0,1,0,'Page','2013-11-21 09:30:34','2014-02-28 17:36:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>\n<p><img class=\"leftAlone\" title=\"\" src=\"assets/Uploads/_resampled/ResizedImage600316-birthday.jpg\" alt=\"birthday\" width=\"600\" height=\"316\"></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(27,1,12,1,1,1,'Page','2013-11-21 09:30:34','2014-02-28 17:36:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>\n<p><img class=\"leftAlone\" title=\"\" src=\"assets/Uploads/_resampled/ResizedImage600316-birthday.jpg\" alt=\"birthday\" width=\"600\" height=\"316\"></p>\n<p><img class=\"leftAlone\" title=\"\" src=\"assets/Uploads/_resampled/ResizedImage600316-birthday.jpg\" alt=\"birthday\" width=\"600\" height=\"316\"></p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(28,1,13,1,1,1,'Page','2013-11-21 09:30:34','2014-03-06 16:01:45','home','Home',NULL,'<p>Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>\n<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>',NULL,NULL,1,1,1,0,0,NULL,'Inherit','Inherit',NULL,0),(29,10,1,1,0,0,'BlogHolder','2014-06-11 00:55:37','2014-06-11 00:55:37','blog','Blog',NULL,NULL,NULL,NULL,1,1,7,0,0,NULL,'Inherit','Inherit',NULL,0),(30,11,1,1,0,0,'BlogEntry','2014-06-11 00:55:37','2014-06-11 00:55:37','sample-blog-entry','SilverStripe blog module successfully installed',NULL,'<p>Congratulations, the SilverStripe blog module has been successfully installed. This blog entry can be safely deleted. You can configure aspects of your blog in <a href=\"admin\">the CMS</a>.</p>',NULL,NULL,0,1,0,0,0,NULL,'Inherit','Inherit',NULL,10),(31,11,2,0,1,0,'BlogEntry','2014-06-11 00:55:37','2014-06-11 13:23:23','sample-blog-entry','SilverStripe blog module successfully installed',NULL,'<p>Congratulations, the SilverStripe blog module has been successfully installed. This blog entry can be safely deleted. You can configure aspects of your blog in <a href=\"admin\">the CMS</a>.</p>',NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,10),(32,11,3,1,1,1,'BlogEntry','2014-06-11 00:55:37','2014-06-11 13:23:23','sample-blog-entry','SilverStripe blog module successfully installed',NULL,'<p>Congratulations, the SilverStripe blog module has been successfully installed. This blog entry can be safely deleted. You can configure aspects of your blog in <a href=\"admin\">the CMS</a>.</p>',NULL,NULL,0,1,1,0,0,NULL,'Inherit','Inherit',NULL,10);
 /*!40000 ALTER TABLE `SiteTree_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1410,6 +1792,31 @@ CREATE TABLE `SubmittedFormField` (
 LOCK TABLES `SubmittedFormField` WRITE;
 /*!40000 ALTER TABLE `SubmittedFormField` DISABLE KEYS */;
 /*!40000 ALTER TABLE `SubmittedFormField` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `TagCloudWidget`
+--
+
+DROP TABLE IF EXISTS `TagCloudWidget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TagCloudWidget` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(50) DEFAULT NULL,
+  `Limit` int(11) NOT NULL DEFAULT '0',
+  `Sortby` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `TagCloudWidget`
+--
+
+LOCK TABLES `TagCloudWidget` WRITE;
+/*!40000 ALTER TABLE `TagCloudWidget` DISABLE KEYS */;
+/*!40000 ALTER TABLE `TagCloudWidget` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1654,6 +2061,62 @@ LOCK TABLES `VirtualPage_versions` WRITE;
 /*!40000 ALTER TABLE `VirtualPage_versions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `VirtualPage_versions` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `Widget`
+--
+
+DROP TABLE IF EXISTS `Widget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Widget` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ClassName` enum('Widget','ArchiveWidget','BlogManagementWidget','RSSWidget','SubscribeRSSWidget','TagCloudWidget','CategoryCloudWidget') DEFAULT 'Widget',
+  `Created` datetime DEFAULT NULL,
+  `LastEdited` datetime DEFAULT NULL,
+  `Sort` int(11) NOT NULL DEFAULT '0',
+  `Enabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `ParentID` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `ParentID` (`ParentID`),
+  KEY `ClassName` (`ClassName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Widget`
+--
+
+LOCK TABLES `Widget` WRITE;
+/*!40000 ALTER TABLE `Widget` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Widget` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `WidgetArea`
+--
+
+DROP TABLE IF EXISTS `WidgetArea`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `WidgetArea` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ClassName` enum('WidgetArea') DEFAULT 'WidgetArea',
+  `Created` datetime DEFAULT NULL,
+  `LastEdited` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `ClassName` (`ClassName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `WidgetArea`
+--
+
+LOCK TABLES `WidgetArea` WRITE;
+/*!40000 ALTER TABLE `WidgetArea` DISABLE KEYS */;
+/*!40000 ALTER TABLE `WidgetArea` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1664,4 +2127,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-22 14:24:01
+-- Dump completed on 2014-06-11 13:50:04
