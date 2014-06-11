@@ -8,11 +8,12 @@ After: 'framework/*','cms/*'
 SiteVersion:
   version: 1.0
 SSViewer:
-  theme: 'simple'
+  theme: 'default'
 Page:
   extensions:
     - SocialDecorator
     - PageDecorator
+    - SeoObjectExtension
 SiteConfig:
   extensions:
     - CustomSiteConfig
@@ -22,3 +23,15 @@ Page_Controller:
 ModelAdmin:
   extensions:
     - ModelAdminExtension
+BlogEntry:
+  extensions:
+    - BlogCategoryAdmin
+    - SeoObjectExtension
+SeoConfig:
+    Page: true
+    ErrorPage: false
+    RedirectorPage: false
+    VirtualPage: false
+    BlogHolder: true
+    BlogEntry: true
+    UserDefinedForm: true
