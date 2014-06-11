@@ -82,7 +82,7 @@ Requirements::themedCSS('reset');
 		}
 		
 		// prevent bots from spidering the site whilest in dev.
-		if(Director::isDev()) {
+		if!(Director::isLive()) {
 			$tags .= "<meta name=\"robots\" content=\"noindex, nofollow, noarchive\" />\n";
 		}
 		
