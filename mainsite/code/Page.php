@@ -61,9 +61,11 @@ Requirements::themedCSS('reset');
 	
 	public function MetaTags($includeTitle = true) {
 		$tags = parent::MetaTags();
-		if($includeTitle === true || $includeTitle == 'true') {
+		/*
+if($includeTitle === true || $includeTitle == 'true') {
 			$tags = preg_replace('/(\<title\>.*\<\/title\>)/', "<title>" . $this->getTheTitle() . "</title>\n", $tags);
 		}
+*/
 		
 		$charset = ContentNegotiator::get_encoding();
 		$tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
@@ -82,7 +84,7 @@ Requirements::themedCSS('reset');
 		}
 		
 		// prevent bots from spidering the site whilest in dev.
-		if!(Director::isLive()) {
+		if(!Director::isLive()) {
 			$tags .= "<meta name=\"robots\" content=\"noindex, nofollow, noarchive\" />\n";
 		}
 		
