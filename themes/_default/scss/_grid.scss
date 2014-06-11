@@ -1,0 +1,114 @@
+@import 'base', 'breakpoint', 'susy', 'compass/utilities/general/clearfix';
+
+$susy: (
+	container: 60em,
+	column-width: 8em,
+	gutters: $gutter-width/$column-width,
+	gutter-position: split,
+	columns: $total-columns,
+	global-box-sizing: border-box,
+	spread: narrow
+);
+
+
+
+.container { 
+	@include container;
+	
+}
+
+.row {
+	@include clearfix;
+	@include break;
+	background: green;
+}
+
+
+@for $i from 1 through $total-columns {
+	.grid_#{$i} {
+		background: red;
+		@include span($i of $total-columns);
+		
+		@if $i == 1 {
+			width: $column-width;
+			max-width: $column-width;
+			_width: $column-width;
+		}
+		
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+
+/* ===========================
+ * Responsive Grid
+ * =========================== */
+ 
+/* ===========================
+ * iPad to Desktop
+ * =========================== */
+@include susy-breakpoint(30em 60em, $total-columns) {	
+	body {
+		background: blue;
+	}
+	
+	.row1 {
+		width: 428px;
+		margin: 0 auto;
+	}
+}
+
+/* ===========================
+ * iPhone to iPad
+ * =========================== */
+@include susy-breakpoint(20em 30em, $total-columns) {	
+	body {
+		background: blue;
+	}
+	
+	.row1 {
+		width:275px;
+		margin: 0 auto;
+	}
+}
+
+
+/* ===========================
+ * iPhone
+ * =========================== */
+@include susy-breakpoint(0em 20em, $total-columns) {	
+	.container {
+		margin: 0 $grid-padding;
+	}
+	
+	@for $i from 1 through $total-columns {
+
+		.grid_#{$i} {
+			@if $i == 1 {
+				width: $column-width;
+				max-width: $column-width;
+				_width: $column-width;
+			} @else {
+				width: 100%;
+				margin: 0;
+				min-width: 273px;
+			}
+		}
+	}
+	
+	.row1 {
+		width: 100%;
+		
+		.grid_1 {
+			float: none;
+			margin: 0 auto;
+		}
+	}
+	.row {
+		padding: 0;
+		width: 100%;
+		@include box-sizing(border-box);
+	}
+}
