@@ -1,7 +1,0 @@
----
-After: 'silverstripe-optimisedimage/config#core'
----
-ImageOptimiserService:
-  enabledCommands:
-    - jpegoptim
-    - optipng
