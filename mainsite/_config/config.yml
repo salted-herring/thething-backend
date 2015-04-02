@@ -11,8 +11,8 @@ SSViewer:
   theme: 'default'
 Page:
   extensions:
-    - SocialDecorator
-    - PageDecorator
+    - SocialExtensions
+    - PageExtensions
     - SeoObjectExtension
 SiteConfig:
   extensions:
@@ -23,15 +23,9 @@ Page_Controller:
 ModelAdmin:
   extensions:
     - ModelAdminExtension
-BlogEntry:
-  extensions:
-    - BlogCategoryAdmin
-    - SeoObjectExtension
+
 SeoConfig:
     Page: true
     ErrorPage: false
     RedirectorPage: false
     VirtualPage: false
-    BlogHolder: true
-    BlogEntry: true
-    UserDefinedForm: true

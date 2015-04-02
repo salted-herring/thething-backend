@@ -1,6 +1,6 @@
 <?php
 
-class PageDecorator extends DataExtension {
+class PageExtensions extends DataExtension {
 	public function createCSS() {
 		$dir = 'themes/' . SiteConfig::current_site_config()->Theme . '/scss/';
 		$scss = strtolower(get_class($this->owner)) . '.scss';

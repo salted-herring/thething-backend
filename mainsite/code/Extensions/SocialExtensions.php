@@ -1,6 +1,6 @@
 <?php
 
-class SocialDecorator extends DataExtension {
+class SocialExtensions extends DataExtension {
 	public static $db = array(
 		'OGTitle' => 'Varchar(255)',
         'OGDescription' => 'Varchar(255)'
