@@ -1,46 +1,49 @@
 <?php
 
-class SocialExtensions extends DataExtension {
-	public static $db = array(
-		'OGTitle' => 'Varchar(255)',
-		'OGDescription' => 'Varchar(255)'
-	);
-	public static $has_one =  array(
-		'OGImage' => 'Image'
-	);
-	
-	function __construct() {
-		parent::__construct();
-	}
-
-	public function updateCMSFields(FieldList $fields) {
-		$og = ToggleCompositeField::create(
-			'OG',
-			new LabelField('Open', 'Open Graph Tags - for Facebook sharing'),
-			array(
-				new TextField('OGTitle', 'Title'),
-				new TextField('OGDescription', 'Description'),
-				new UploadField('OGImage', 'Image')
-			)
+	class SocialExtensions extends DataExtension {
+		public static $db = array(
+			'OGTitle' => 'Varchar(255)',
+			'OGDescription' => 'Varchar(255)'
 		);
-		$og->setStartClosed(false);
-		$fields->addFieldToTab('Root.Social', $og);
-	}
-
-	public function onBeforeWrite() {
-		parent::onBeforeWrite();
+		public static $has_one =  array(
+			'OGImage' => 'Image'
+		);
 		
-		if($this->owner->ID && $this->owner->Title && !$this->owner->OGTitle) {
-			$this->owner->OGTitle = $this->owner->Title;
+		function __construct() {
+			parent::__construct();
 		}
-		
-		if($this->owner->ID && $this->owner->Content && !$this->owner->OGDescription) {
-			$matches = array();
-			preg_match('(<p.*>(.*)</p>)', $this->owner->Content, $matches);
+	
+		public function updateCMSFields(FieldList $fields) {
+			$og = ToggleCompositeField::create(
+				'OG',
+				new LabelField('Open', 'Open Graph Tags - for Facebook sharing'),
+				array(
+					new TextField('OGTitle', 'Title'),
+					new TextField('OGDescription', 'Description'),
+					new UploadField('OGImage', 'Image')
+				)
+			);
+			$og->setStartClosed(false);
+			$fields->addFieldToTab('Root.Social', $og);
+		}
+	
+		public function onBeforeWrite() {
+			parent::onBeforeWrite();
 			
-			if($matches) {
-				$this->owner->OGDescription = $matches[1];
+			if($this->owner->ID && $this->owner->Title && !$this->owner->OGTitle) {
+				$this->owner->OGTitle = $this->owner->Title;
+			}
+			
+			/**
+			 * If we have content & no OG description, get the first sentence as the OG tag.
+			 * */
+			if($this->owner->ID && $this->owner->Content && !$this->owner->OGDescription) {
+				$matches = array();
+				preg_match('(<p.*>(.*)</p>)', $this->owner->Content, $matches);
+				
+				if($matches) {
+					$this->owner->OGDescription = $matches[1];
+				}
 			}
 		}
 	}
-}
