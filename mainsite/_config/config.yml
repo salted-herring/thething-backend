@@ -12,7 +12,6 @@ SSViewer:
 Page:
   extensions:
     - SocialExtensions
-    - PageExtensions
     - SeoObjectExtension
 SiteConfig:
   extensions:

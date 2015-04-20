@@ -3,7 +3,7 @@
 class SocialExtensions extends DataExtension {
 	public static $db = array(
 		'OGTitle' => 'Varchar(255)',
-        'OGDescription' => 'Varchar(255)'
+		'OGDescription' => 'Varchar(255)'
 	);
 	public static $has_one =  array(
 		'OGImage' => 'Image'
@@ -12,12 +12,7 @@ class SocialExtensions extends DataExtension {
 	function __construct() {
 		parent::__construct();
 	}
-	
-	function getCMSFields() {	 
-	    $fields = parent::getCMSFields();
-	    return $fields;
-	}
-    
+
 	public function updateCMSFields(FieldList $fields) {
 		$og = ToggleCompositeField::create(
 			'OG',
@@ -31,7 +26,7 @@ class SocialExtensions extends DataExtension {
 		$og->setStartClosed(false);
 		$fields->addFieldToTab('Root.Social', $og);
 	}
-	
+
 	public function onBeforeWrite() {
 		parent::onBeforeWrite();
 		

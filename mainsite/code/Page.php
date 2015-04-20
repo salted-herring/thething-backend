@@ -49,7 +49,7 @@ Requirements::themedCSS('reset');
 		$protocol = 'http';
 		if (isset($_SERVER['SCRIPT_URI']) && substr($_SERVER['SCRIPT_URI'], 0, 5) == 'https') {
 			$protocol = 'https';
-		} else if (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') {
+		} elseif (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') {
 			$protocol = 'https';
 		}
 		return $protocol;
@@ -80,7 +80,8 @@ if($includeTitle === true || $includeTitle == 'true') {
 		} 
 		
 		if($this->URLSegment == 'home' && SiteConfig::current_site_config()->GoogleSiteVerificationCode) {
-			$tags .= '<meta name="google-site-verification" content="' . SiteConfig::current_site_config()->GoogleSiteVerificationCode . '" />\n';
+			$tags .= '<meta name="google-site-verification" content="' 
+					. SiteConfig::current_site_config()->GoogleSiteVerificationCode . '" />\n';
 		}
 		
 		// prevent bots from spidering the site whilest in dev.

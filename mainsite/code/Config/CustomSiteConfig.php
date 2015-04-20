@@ -8,11 +8,11 @@ class CustomSiteConfig extends DataExtension {
 		'GoogleCustomCode' => 'HTMLText',
 		
 		'OGTitle' => 'Varchar(255)',
-        'OGDescription' => 'Varchar(255)',
-        
-        'FacebookURL' => 'Varchar(255)',
-        'TwitterURL' => 'Varchar(255)',
-        'PinterestURL' => 'Varchar(255)'
+		'OGDescription' => 'Varchar(255)',
+		
+		'FacebookURL' => 'Varchar(255)',
+		'TwitterURL' => 'Varchar(255)',
+		'PinterestURL' => 'Varchar(255)'
 	);
 	public static $has_one =  array(
 		'OGImage' => 'Image'
