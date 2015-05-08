@@ -11,8 +11,9 @@ SSViewer:
   theme: 'default'
 Page:
   extensions:
-    - SocialExtensions
+    - OpenGraphExtensions
     - SeoObjectExtension
+    - SocialExtensions
 SiteConfig:
   extensions:
     - CustomSiteConfig

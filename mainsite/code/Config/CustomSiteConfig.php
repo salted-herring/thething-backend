@@ -7,12 +7,16 @@ class CustomSiteConfig extends DataExtension {
 		'SiteVersion' => 'Varchar(10)',
 		'GoogleCustomCode' => 'HTMLText',
 		
+/*
 		'OGTitle' => 'Varchar(255)',
 		'OGDescription' => 'Varchar(255)',
+*/
 		
+/*
 		'FacebookURL' => 'Varchar(255)',
 		'TwitterURL' => 'Varchar(255)',
 		'PinterestURL' => 'Varchar(255)'
+*/
 	);
 	public static $has_one =  array(
 		'OGImage' => 'Image'
@@ -25,6 +29,7 @@ class CustomSiteConfig extends DataExtension {
 		
 		$fields->addFieldToTab('Root.Main', new TextField('SiteVersion', 'Site Version'));
 		
+/*
 		$og = ToggleCompositeField::create(
 			'OG',
 			new LabelField('Open', 'Open Graph Tags - for Facebook sharing'),
@@ -35,12 +40,15 @@ class CustomSiteConfig extends DataExtension {
 			)
 		);
 		$og->setStartClosed(true);
+*/
+/*
 		$fields->addFieldsToTab('Root.Social', array(
-			$og,
+// 			$og,
 			new TextField('FacebookURL', 'Facebook Page'),
 			new TextField('TwitterURL', 'Twitter Profile'),
 			new TextField('PinterestURL', 'Pinterest Page')
 		));
+*/
 	}
 	
 }
