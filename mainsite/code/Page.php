@@ -97,36 +97,5 @@ if($includeTitle === true || $includeTitle == 'true') {
 	public function getTheTitle() {
 		return Convert::raw2xml(($this->MetaTitle) ? $this->MetaTitle : $this->Title);
 	}
-	
-	public function getOG($var = 'Title') {
-		switch($var) {
-			case 'Title':
-				if ($this->OGTitle) {
-					return $this->OGTitle;
-				}
-				if (SiteConfig::current_site_config()->OGTitle) {
-					return SiteConfig::current_site_config()->OGTitle;
-				}
-				return false;
-			case 'Description':
-				if ($this->OGDescription) {
-					return $this->OGDescription;
-				}
-				if (SiteConfig::current_site_config()->OGDescription) {
-					return SiteConfig::current_site_config()->OGDescription;
-				}
-				return false;
-			case 'Image':
-				if ($this->OGImage()) {
-					return $this->OGImage();
-				}
-				if (SiteConfig::current_site_config()->OGImage()) {
-					return SiteConfig::current_site_config()->OGImage();
-				}
-				return false;
-			default:
-				return false;
-		}
-	}
 
 }
