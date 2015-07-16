@@ -56,7 +56,7 @@ class OpenGraphExtension extends DataExtension {
 		$fields->removeFieldsFromTab('Root.Main', array(
 			'OGTitle',
 			'OGTitle',
-			'OGDescription'
+			'OGDescription'	
 		));
 		
 		$OGImage->setDescription('Image must be at least 1200px x 630px.');
