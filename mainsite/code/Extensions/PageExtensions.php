@@ -16,7 +16,7 @@
 				$themeFolder . '/css/styles.css'
 			);
 			
-			if(file_exists(BASE_PATH . $this->owner->ThemeDir() . '/css/pagetypes/' . $css . '.css')) {
+			if(file_exists(BASE_PATH . '/' . $this->owner->ThemeDir() . '/css/pagetypes/' . $css . '.css')) {
 				$files[] = $themeFolder . '/css/pagetypes/' . $css . '.css';
 			}
 			
