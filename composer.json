@@ -11,12 +11,15 @@
 		"silverstripe/html5": "~1.0.2",
 		"silverstripe-australia/gridfieldextensions": "~1.1.0",
 		"silverstripe/staticpublisher": "~1.0.0",
+		"silverstripe/lumberjack": "~1.1",
 		
 		"undefinedoffset/sortablegridfield": "~0.4.1",
 		"hubertusanton/silverstripe-seo": "~2.0",
 		"kinglozzer/silverstripegmapsobject": "~1.0.1",
 		"heyday/silverstripe-optimisedimage": "~2.2.1",
 		"heyday/silverstripe-dataobjectpreview": "~1.0.2",
+		"heyday/silverstripe-versioneddataobjects": "~1.0.0",
+		"icecaster/versioned-gridfield": "dev-master",
 		"normann/gridfieldpaginatorwithshowall": "dev-master"
 	},
 	"require-dev": {
