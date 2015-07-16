@@ -5,21 +5,7 @@ class CustomSiteConfig extends DataExtension {
 		'GoogleSiteVerificationCode' => 'Varchar(128)',
 		'GoogleAnalyticsCode' => 'Varchar(20)',
 		'SiteVersion' => 'Varchar(10)',
-		'GoogleCustomCode' => 'HTMLText',
-		
-/*
-		'OGTitle' => 'Varchar(255)',
-		'OGDescription' => 'Varchar(255)',
-*/
-		
-/*
-		'FacebookURL' => 'Varchar(255)',
-		'TwitterURL' => 'Varchar(255)',
-		'PinterestURL' => 'Varchar(255)'
-*/
-	);
-	public static $has_one =  array(
-		'OGImage' => 'Image'
+		'GoogleCustomCode' => 'HTMLText'
 	);
 	
 	public function updateCMSFields(FieldList $fields) {		
@@ -28,27 +14,6 @@ class CustomSiteConfig extends DataExtension {
 		$fields->addFieldToTab("Root.Google", new TextareaField('GoogleCustomCode', 'Custom Google Code'));
 		
 		$fields->addFieldToTab('Root.Main', new TextField('SiteVersion', 'Site Version'));
-		
-/*
-		$og = ToggleCompositeField::create(
-			'OG',
-			new LabelField('Open', 'Open Graph Tags - for Facebook sharing'),
-			array(
-				new TextField('OGTitle', 'Title'),
-				new TextField('OGDescription', 'Description'),
-				new UploadField('OGImage', 'Image')
-			)
-		);
-		$og->setStartClosed(true);
-*/
-/*
-		$fields->addFieldsToTab('Root.Social', array(
-// 			$og,
-			new TextField('FacebookURL', 'Facebook Page'),
-			new TextField('TwitterURL', 'Twitter Profile'),
-			new TextField('PinterestURL', 'Pinterest Page')
-		));
-*/
 	}
 	
 }
