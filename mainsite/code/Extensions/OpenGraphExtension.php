@@ -53,7 +53,11 @@ class OpenGraphExtension extends DataExtension {
 			)
 		);
 		
-		$fields->removeByName('OGTitle');
+		$fields->removeFieldsFromTab('Root.Main', array(
+			'OGTitle',
+			'OGTitle',
+			'OGDescription'
+		));
 		
 		$OGImage->setDescription('Image must be at least 1200px x 630px.');
 		$fields->addFieldToTab('Root.Social', $og);
