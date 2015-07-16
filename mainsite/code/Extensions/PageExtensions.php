@@ -5,14 +5,22 @@
 	 * Generic extensions to page controller.
 	 * */
 	class PageControllerDecorator extends Extension {
+		
+		/**
+		 * Load & combine css.
+		 * */
 		public function getCSS() {
 			$css = strtolower($this->owner->data()->class);
+			$themeFolder = $this->owner->ThemeDir();
+			$files = array(
+				$themeFolder . '/css/styles.css'
+			);
 			
-			if(!file_exists(BASE_PATH . $this->owner->ThemeDir() . '/css/' . $css . '.css')) {
-				$css = 'styles';
+			if(file_exists(BASE_PATH . $this->owner->ThemeDir() . '/css/pagetypes/' . $css . '.css')) {
+				$files[] = $themeFolder . '/css/pagetypes/' . $css . '.css';
 			}
 			
-			return sprintf('<link rel="stylesheet" href="%s" />', $this->owner->ThemeDir() . '/css/' . $css . '.css');
+			Requirements::combine_files("common.min.css", $files);
 		}
 		
 		public function getRequireJS() {

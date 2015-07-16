@@ -13,6 +13,8 @@ GD::set_default_quality(100);
 
 Image::set_backend("OptimisedGDBackend");
 
+Requirements::set_write_js_to_body(false);
+
 if (Director::isLive()) {
 	SS_Log::add_writer(new SS_LogEmailWriter('administration@saltedherring.com'), SS_Log::ERR);
 }
