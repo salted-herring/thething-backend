@@ -40,3 +40,6 @@ userforms
 gridfieldpaginatorwithshowall
 sortablegridfield
 widgets
+lumberjack
+silverstripe-versioneddataobjects
+versioned-gridfield
