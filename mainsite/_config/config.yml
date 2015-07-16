@@ -11,12 +11,15 @@ SSViewer:
   theme: 'default'
 Page:
   extensions:
-    - OpenGraphExtensions
+    - OpenGraphExtension
+    - TwitterCardExtension
     - SeoObjectExtension
     - SocialExtensions
 SiteConfig:
   extensions:
     - CustomSiteConfig
+    - OpenGraphExtension
+    - TwitterCardExtension
 Page_Controller:
   extensions:
     - PageControllerDecorator
