@@ -20,7 +20,18 @@
 				$files[] = $themeFolder . '/css/pagetypes/' . $css . '.css';
 			}
 			
-			Requirements::combine_files("common.min.css", $files);
+			/**
+			 * No longer using requirements in live mode - there are issues with the css paths.
+			 * */
+			//Requirements::combine_files("common.min.css", $files);
+			
+			$outputFiles = array();
+			
+			foreach ($files as $file) {
+				$outputFiles[] = sprintf('<link rel="stylesheet" type="text/css" href="%s" />', $file);
+			}
+			
+			return implode("\n\t\t", $outputFiles);
 		}
 		
 		public function getRequireJS() {
