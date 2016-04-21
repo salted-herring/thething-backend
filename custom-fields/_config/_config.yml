@@ -1,0 +1,6 @@
+---
+Name: custom_fields
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
