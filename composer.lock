@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3088cd99fe2fa4d4f13bcb0b1b4eaaf9",
-    "content-hash": "cd77c583c25f4a708bb950dc7fb42715",
+    "hash": "94c1769664148cccadabed036c21e625",
+    "content-hash": "55b9f093ce95d1c8359c38ca0258f6b9",
     "packages": [
         {
             "name": "composer/installers",
@@ -375,47 +375,43 @@
             "time": "2013-09-25 18:47:47"
         },
         {
-            "name": "satrun77/editablefield",
-            "version": "1.1.1",
+            "name": "ntb/silverstripe-rest-api",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/satrun77/silverstripe-editablefield.git",
-                "reference": "b508b4620ee7f3f618a9b13e146904f16ffa1a71"
+                "url": "https://github.com/notthatbad/silverstripe-rest-api.git",
+                "reference": "993045af0df4945e204f2fbb7350ea895d8c9a6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/satrun77/silverstripe-editablefield/zipball/b508b4620ee7f3f618a9b13e146904f16ffa1a71",
-                "reference": "b508b4620ee7f3f618a9b13e146904f16ffa1a71",
+                "url": "https://api.github.com/repos/notthatbad/silverstripe-rest-api/zipball/993045af0df4945e204f2fbb7350ea895d8c9a6a",
+                "reference": "993045af0df4945e204f2fbb7350ea895d8c9a6a",
                 "shasum": ""
             },
             "require": {
-                "silverstripe/cms": "~3.1",
-                "silverstripe/framework": "~3.1"
-            },
-            "suggest": {
-                "satrun77/configurablepage": "Creates pages with customisable fields created by the editablefield module."
+                "composer/installers": "*",
+                "php": ">=5.3.2",
+                "silverstripe/framework": ">=3.1.13"
             },
             "type": "silverstripe-module",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
-                    "name": "Mohamed Alsharaf",
-                    "email": "mohamed.alsharaf@gmail.com",
-                    "homepage": "http://my.geek.nz",
-                    "role": "Developer"
+                    "name": "Christian Blank",
+                    "email": "christian.blank@haw-hamburg.de"
                 }
             ],
-            "description": "This module allows CMS admin to create an manage list of configurable form fields that can be used by other module such as, satrun77/configurablepage.",
-            "homepage": "https://github.com/satrun77/silverstripe-editablefield",
+            "description": "REST api module for Silverstripe",
+            "homepage": "https://github.com/1blankz7/silverstripe-rest-api",
             "keywords": [
-                "form fields",
-                "model admin",
+                "api",
+                "rest",
                 "silverstripe"
             ],
-            "time": "2015-06-18 09:49:47"
+            "time": "2016-02-21 17:19:11"
         },
         {
             "name": "silverstripe-australia/gridfieldextensions",
@@ -1279,7 +1275,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "icecaster/versioned-gridfield": 20,
-        "normann/gridfieldpaginatorwithshowall": 20
+        "normann/gridfieldpaginatorwithshowall": 20,
+        "ntb/silverstripe-rest-api": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
