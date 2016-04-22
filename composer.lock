@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "94c1769664148cccadabed036c21e625",
-    "content-hash": "55b9f093ce95d1c8359c38ca0258f6b9",
+    "hash": "8133066212464d87a3969f48ed88dfe7",
+    "content-hash": "d6b1b55b8ada19cf25edfa07e746ff42",
     "packages": [
         {
             "name": "composer/installers",
@@ -729,6 +729,45 @@
             "time": "2015-12-22 01:21:03"
         },
         {
+            "name": "silverstripe/segment-field",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/assertchris/silverstripe-segment-field.git",
+                "reference": "0b1445307bac488ddc35d624564f4300e8080029"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/assertchris/silverstripe-segment-field/zipball/0b1445307bac488ddc35d624564f4300e8080029",
+                "reference": "0b1445307bac488ddc35d624564f4300e8080029",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/cms": "^3.1",
+                "silverstripe/framework": "^3.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9",
+                "phpunit/phpunit": "^3.7"
+            },
+            "type": "silverstripe-module",
+            "autoload": {
+                "psr-4": {
+                    "SilverStripe\\Forms\\": "code"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A reusable approach to segment-generating fields",
+            "keywords": [
+                "segment",
+                "silverstripe"
+            ],
+            "time": "2015-08-18 04:44:43"
+        },
+        {
             "name": "silverstripe/siteconfig",
             "version": "3.3.1",
             "source": {
@@ -1276,7 +1315,8 @@
     "stability-flags": {
         "icecaster/versioned-gridfield": 20,
         "normann/gridfieldpaginatorwithshowall": 20,
-        "ntb/silverstripe-rest-api": 20
+        "ntb/silverstripe-rest-api": 20,
+        "silverstripe/segment-field": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

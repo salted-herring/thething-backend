@@ -1,10 +1,11 @@
 <?php
     
 class CustomFieldAdmin extends ModelAdmin {
-   private static $managed_models = array('CustomField');
-   static $url_segment = 'custom-fields';
-   static $menu_title = 'Custom Fields';
+   private static $managed_models = array('CustomForm');
+   static $url_segment = 'custom-forms';
+   static $menu_title = 'Custom Forms';
    
+/*
    public function getEditForm($id = null, $fields = null) {
         $form = parent::getEditForm($id, $fields);
         $gridField = $form->Fields()->fieldByName($this->sanitiseClassName($this->modelClass));
@@ -16,4 +17,5 @@ class CustomFieldAdmin extends ModelAdmin {
 		
         return $form;
     }
+*/
 }

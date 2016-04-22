@@ -4,3 +4,14 @@ After:
   - 'framework/*'
   - 'cms/*'
 ---
+CustomField:
+  Types:
+    - BooleanValueField: "boolean"
+    - DecimalValueField: "decimal"
+    - HTMLTextValueField: "html text"
+    - HTMLTextAreaValueField: "html text area"
+    - IntValueField: "integer"
+    - SelectValueField: "select"
+    - TextValueField: "text"
+    - TextAreaValueField: "text area"
+  ApiEndpoint: "api/v/1/data/"
