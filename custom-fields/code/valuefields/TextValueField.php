@@ -14,7 +14,7 @@ class TextValueField extends ValueInstance {
 	);
 
 	public function getFieldTemplate() {
-    	$field = TextField::create($this->Name);
+    	$field = TextField::create($name);
 
     	if ($this->Value) {
         	$field->setValue($this->Value);

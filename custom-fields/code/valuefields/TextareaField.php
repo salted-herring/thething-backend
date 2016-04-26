@@ -14,7 +14,8 @@ class TextareaValueField extends ValueInstance {
 	);
 
 	public function getFieldTemplate() {
-    	$field = TextareaField::create($this->Name)
+		$name = $this->getFieldLabel();
+    	$field = TextareaField::create($name)
     				->setDescription('Limited to 512 characters.');
 
     	if ($this->Value) {

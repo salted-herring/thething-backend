@@ -51,6 +51,13 @@ class CustomField extends DataObject {
         return $filter->filter(strtolower($this->Title));
     }
 
+    public function onBeforeWrite() {
+	    parent::onBeforeWrite();
+
+		$filter = new URLSegmentFilter();
+        $this->Title = $filter->filter($this->Title);
+    }
+
 
     public function getCMSFields()
     {
@@ -82,8 +89,6 @@ class CustomField extends DataObject {
         $fields->replaceField('DataType', $dd);
 
         $additional = Config::inst()->get('CustomField', 'AdditionalData');
-
-
 
         if ($this->DataType) {
 	        $additionalType = null;
@@ -123,6 +128,13 @@ class CustomField extends DataObject {
  				$fields->addFieldToTab('Root.Main', $gridField);
         	}
         }
+
+        $fields->changeFieldOrder(array(
+	        'FormID',
+	        'DataType',
+	        'Title',
+	        'Label'
+        ));
 
         return $fields;
     }

@@ -16,7 +16,8 @@ class DecimalValueField extends ValueInstance
 
     public function getFieldTemplate()
     {
-        $field = NumericField::create($this->Name);
+	    $name = $this->getFieldLabel();
+        $field = NumericField::create($name);
 
         if ($this->Value) {
             $field->setValue($this->Value);

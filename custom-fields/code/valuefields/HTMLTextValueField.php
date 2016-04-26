@@ -14,7 +14,8 @@ class HTMLTextValueField extends ValueInstance {
 	);
 
 	public function getFieldTemplate() {
-    	$field = HTMLEditorField::create($this->Name);
+		$name = $this->getFieldLabel();
+    	$field = HTMLEditorField::create($name);
 
     	if ($this->Value) {
         	$field->setValue($this->Value);

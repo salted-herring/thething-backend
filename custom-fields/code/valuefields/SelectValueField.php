@@ -18,6 +18,7 @@ class SelectValueField extends ValueInstance {
 		$realField = $this->Field();
 		$options = null;
 		$data = array();
+		$name = $this->getFieldLabel();
 
 		if ($realField->exists()) {
 			$options = $realField->AdditionalData();
@@ -27,7 +28,7 @@ class SelectValueField extends ValueInstance {
 			$data = $options->map('Value', 'Label')->toArray();
 		}
 
-    	$field = DropdownField::create($this->Name, $this->Name, $data)
+    	$field = DropdownField::create($name, $name, $data)
 					->setEmptyString('(select one)');
 
 		if ($this->Value) {

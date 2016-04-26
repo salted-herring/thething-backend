@@ -1,8 +1,10 @@
 <?php
 
-class FormDataFormatter implements IRestSerializeFormatter {
+class FormDataFormatter implements IRestSerializeFormatter
+{
 
-    public static function format($data, $access=null, $fields=null) {
+    public static function format($data, $access=null, $fields=null)
+    {
         $output = [
             'id' => $data->ID,
             'name' => $data->Name,
@@ -14,13 +16,19 @@ class FormDataFormatter implements IRestSerializeFormatter {
 
 			foreach ($data->Submissions() as $submission) {
 				$current = array(
-					'id'	=> $submission->ID
+					'id'		=> $submission->ID,
+					'fields'	=> null
 				);
 
+				if ($submission->Fields()->count() > 0) {
+					$current['fields'] = array();
+				}
+
 				foreach ($submission->Fields() as $field) {
-					$current[$field->Name] = array(
+					$realField = $field->Field();
+					$current['fields'][$field->Name] = array(
 						'value'	=> $field->Value,
-						'label'	=> $field->Label
+						'label'	=> $realField ? $realField->Label : ''
 					);
 				}
 

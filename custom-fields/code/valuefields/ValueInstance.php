@@ -46,6 +46,16 @@ class ValueInstance extends DataObject {
 
 	public function getFieldTemplate()
 	{
+	}
 
+	protected function getFieldLabel() {
+		$realField = $this->Field();
+		$name = $this->Name;
+
+		if ($realField->exists()) {
+			$name = $realField->Label ? $realField->Label : $realField->Name;
+		}
+
+		return $name;
 	}
 }

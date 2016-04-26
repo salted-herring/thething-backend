@@ -15,7 +15,8 @@ class DateValueField extends ValueInstance
 
     public function getFieldTemplate()
     {
-        $field = DateField::create($this->Name)
+	    $name = $this->getFieldLabel();
+        $field = DateField::create($name)
         			->setConfig('showcalendar', true);
 
         if ($this->Value) {

@@ -14,7 +14,8 @@ class BooleanValueField extends ValueInstance {
 	);
 
 	public function getFieldTemplate() {
-    	$field = CheckboxField::create($this->Name);
+		$name = $this->getFieldLabel();
+    	$field = CheckboxField::create($name);
 
     	if ($this->Value) {
         	$field->setValue($this->Value);
