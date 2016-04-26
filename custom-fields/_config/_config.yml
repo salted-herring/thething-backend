@@ -15,3 +15,5 @@ CustomField:
     - TextValueField: "text"
     - TextAreaValueField: "text area"
   ApiEndpoint: "api/v/1/data/"
+  AdditionalData:
+    - SelectValueField: OptionValueField

@@ -33,6 +33,7 @@ class CustomSubmission extends DataObject {
         $fields->removeByName('Fields');
 
         $form = $this->Form();
+
         $formFields = $form->CustomFields();
 
         foreach ($formFields as $f) {
@@ -45,6 +46,7 @@ class CustomSubmission extends DataObject {
 		        $type = $f->DataType;
 	            $type = new $type();
 	            $type->Name = $f->Title;
+	            $type->FieldID = $f->ID;
 	        }
 
             $fields->addFieldToTab('Root.Main', $type->getFieldTemplate());
@@ -69,6 +71,7 @@ class CustomSubmission extends DataObject {
 	        } else {
 		        $type = $f->DataType;
 	            $type = new $type();
+	            $type->write();
 	        }
 
 	        if (array_key_exists($f->Title, $this->record)) {

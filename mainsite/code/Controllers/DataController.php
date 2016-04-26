@@ -11,7 +11,7 @@ class DataController extends BaseRestController {
     );
 
     public function get($request) {
-        $data = CustomForm::get();
+        $data = CustomForm::get()->filter('URL', $request->param('ID'));
         $meta = [
             'count' => $data->Count(),
             'timestamp' => time()

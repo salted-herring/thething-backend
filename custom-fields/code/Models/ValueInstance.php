@@ -12,7 +12,8 @@ class ValueInstance extends DataObject {
 
 
 	private static $has_one = array(
-    	'Submission'    => 'CustomSubmission'
+    	'Submission'    => 'CustomSubmission',
+    	'Field'			=> 'CustomField'
 	);
 
 	private static $summary_fields = array(
@@ -22,5 +23,9 @@ class ValueInstance extends DataObject {
 
 	public function Value() {
     	return '';
+	}
+
+	public function cmsAdditions() {
+		return false;
 	}
 }

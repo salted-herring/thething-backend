@@ -10,7 +10,7 @@ class IntValueField extends ValueInstance {
 	private static $plural_name = 'Integer Fields';
 
 	private static $db = array(
-    	'Value' => 'Varchar(256)'
+    	'Value' => 'Int'
 	);
 
 	public function getFieldTemplate() {
