@@ -4,25 +4,23 @@
  *
  * Custom Submission
  */
-class CustomSubmission extends DataObject {
-    private static $db = array(
-    );
-
+class CustomSubmission extends DataObject
+{
     private static $has_one = array(
-        'Form'  		=> 'CustomForm'
+        'Form'          => 'CustomForm'
     );
 
     private static $has_many = array(
-        'Fields'    	=> 'ValueInstance'
+        'Fields'        => 'ValueInstance'
     );
 
     private static $summary_fields = array(
-	    'ID',
-	    'getSummary'
+        'ID',
+        'getSummary'
     );
 
     private static $field_labels = array(
-	    'getSummary'	=>	'Summary'
+        'getSummary'    =>  'Summary'
     );
 
 
@@ -37,17 +35,16 @@ class CustomSubmission extends DataObject {
         $formFields = $form->CustomFields();
 
         foreach ($formFields as $f) {
+            $existing = $this->getExisting($f->Title);
 
-	        $existing = $this->getExisting($f->Title);
-
-	        if ($existing) {
-		        $type = $existing;
-	        } else {
-		        $type = $f->DataType;
-	            $type = new $type();
-	            $type->Name = $f->Title;
-	            $type->FieldID = $f->ID;
-	        }
+            if ($existing) {
+                $type = $existing;
+            } else {
+                $type = $f->DataType;
+                $type = new $type();
+                $type->Name = $f->Title;
+                $type->FieldID = $f->ID;
+            }
 
             $fields->addFieldToTab('Root.Main', $type->getFieldTemplate());
         }
@@ -63,18 +60,17 @@ class CustomSubmission extends DataObject {
         $formFields = $form->CustomFields();
 
         foreach ($formFields as $f) {
+            $existing = $this->getExisting($f->Title);
 
-	        $existing = $this->getExisting($f->Title);
+            if ($existing) {
+                $type = $existing;
+            } else {
+                $type = $f->DataType;
+                $type = new $type();
+            }
 
-	        if ($existing) {
-		        $type = $existing;
-	        } else {
-		        $type = $f->DataType;
-	            $type = new $type();
-	        }
-
-	        if (array_key_exists($f->Title, $this->record)) {
-		        $type->saveFromCMS($f, $this->record, $this->ID, true);
+            if (array_key_exists($f->Title, $this->record)) {
+                $type->saveFromCMS($f, $this->record, $this->ID, true);
             }
         }
     }
@@ -88,15 +84,15 @@ class CustomSubmission extends DataObject {
             $field = $formFields->first();
 
             $query = array(
-	            'Name'			=> $title,
-	            'ClassName'		=> $field->DataType,
-	            'SubmissionID'	=> $this->ID
+                'Name'          => $title,
+                'ClassName'     => $field->DataType,
+                'SubmissionID'  => $this->ID
             );
 
             $actualField = DataObject::get_one('ValueInstance', $filter = $query);
 
             if ($actualField) {
-	            $actualField = DataObject::get_by_id($field->DataType, $actualField->ID);
+                $actualField = DataObject::get_by_id($field->DataType, $actualField->ID);
             }
 
             return $actualField;
@@ -105,13 +101,14 @@ class CustomSubmission extends DataObject {
         return null;
     }
 
-    public function getSummary() {
-	    $fields = array();
+    public function getSummary()
+    {
+        $fields = array();
 
-	    foreach ($this->Fields() as $field) {
-		    $fields[$field->Name] = $field->Value;
-	    }
+        foreach ($this->Fields() as $field) {
+            $fields[$field->Name] = $field->Value;
+        }
 
-	    return json_encode($fields);
+        return json_encode($fields);
     }
 }

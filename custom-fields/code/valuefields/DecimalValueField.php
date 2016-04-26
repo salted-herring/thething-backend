@@ -16,7 +16,7 @@ class DecimalValueField extends ValueInstance
 
     public function getFieldTemplate()
     {
-	    $name = $this->getFieldLabel();
+        $name = $this->getFieldLabel();
         $field = NumericField::create($name);
 
         if ($this->Value) {
@@ -29,7 +29,8 @@ class DecimalValueField extends ValueInstance
     /**
      * Convert to decimal.
      * */
-    public function onBeforeWrite() {
+    public function onBeforeWrite()
+    {
         parent::onBeforeWrite();
 
         $this->Value = (float)$this->Value;

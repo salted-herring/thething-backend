@@ -7,30 +7,31 @@
  */
 class AdditionalData extends DataObject
 {
-	private static $db = array(
-		'SortOrder' => 'Int'
-	);
+    private static $db = array(
+        'SortOrder' => 'Int'
+    );
 
-	private static $has_one = array(
-		'Field'	=> 'CustomField'
-	);
+    private static $has_one = array(
+        'Field' => 'CustomField'
+    );
 
-	private static $default_sort = 'SortOrder ASC';
+    private static $default_sort = 'SortOrder ASC';
 
-	/**
-	 * Return the grid display of the relationship.
-	 * */
-	public static function displayGridFieldConfig($config)
-	{
+    /**
+     * Return the grid display of the relationship.
+     * */
+    public static function displayGridFieldConfig($config)
+    {
 
-	}
+    }
 
 
-	public function getCMSFields() {
-		$fields = parent::getCMSFields();
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
 
-		$fields->removeByName('SortOrder');
+        $fields->removeByName('SortOrder');
 
-		return $fields;
-	}
+        return $fields;
+    }
 }

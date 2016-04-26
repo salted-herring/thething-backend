@@ -24,21 +24,26 @@ class CustomForm extends DataObject
         $url = $fields->fieldByName('Root.Main.URL');
         $fields->replaceField('URL', $url->performReadOnlyTransformation());
 
-		if ($this->exists()) {
-	        $absoluteEndpoint = Director::absoluteURL(Config::inst()->get('CustomField', 'ApiEndpoint') . $this->URL);
+        if ($this->exists()) {
+            $absoluteEndpoint = Director::absoluteURL(Config::inst()->get('CustomField', 'ApiEndpoint') . $this->URL);
 
-	        $endpoint = sprintf('<a href="%s?accept=json" target="_blank">%s</a>', $absoluteEndpoint, $absoluteEndpoint);
+            $endpoint = sprintf(
+                '<a href="%s?accept=json" target="_blank">%s</a>',
+                $absoluteEndpoint,
+                $absoluteEndpoint
+            );
 
-	        $fields->addFieldToTab('Root.Main',
-	        	LiteralField::create('Endpoint', 'Endpoint: ' . $endpoint)
-	        );
+            $fields->addFieldToTab(
+                'Root.Main',
+                LiteralField::create('Endpoint', 'Endpoint: ' . $endpoint)
+            );
         }
 
         return $fields;
     }
 
-	public function onBeforeWrite()
-	{
+    public function onBeforeWrite()
+    {
         parent::onBeforeWrite();
 
         $filter = new URLSegmentFilter();
