@@ -28,4 +28,24 @@ class ValueInstance extends DataObject {
 	public function cmsAdditions() {
 		return false;
 	}
+
+	/**
+	 * When saving from the CMS, we may need to override some values directly.
+	 * */
+	public function saveFromCMS($field, $record, $submission, $write = false)
+	{
+		$this->Name = $field->Title;
+        $this->Value = $record[$field->Title];
+        $this->SubmissionID = $submission;
+        $this->FieldID = $field->ID;
+
+        if ($write) {
+	    	$this->write();
+        }
+	}
+
+	public function getFieldTemplate()
+	{
+
+	}
 }

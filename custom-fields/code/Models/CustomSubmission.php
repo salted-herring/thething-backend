@@ -71,15 +71,11 @@ class CustomSubmission extends DataObject {
 	        } else {
 		        $type = $f->DataType;
 	            $type = new $type();
-	            $type->write();
 	        }
 
 	        if (array_key_exists($f->Title, $this->record)) {
-	            $type->Name = $f->Title;
-	            $type->Value = $this->record[$f->Title];
-	            $type->SubmissionID = $this->ID;
-	            $type->write();
-           }
+		        $type->saveFromCMS($f, $this->record, $this->ID, true);
+            }
         }
     }
 

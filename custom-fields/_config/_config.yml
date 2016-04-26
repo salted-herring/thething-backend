@@ -7,6 +7,7 @@ After:
 CustomField:
   Types:
     - BooleanValueField: "boolean"
+    - DateValueField: "date"
     - DecimalValueField: "decimal"
     - HTMLTextValueField: "html text"
     - HTMLTextAreaValueField: "html text area"

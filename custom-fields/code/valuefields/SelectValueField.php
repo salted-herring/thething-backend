@@ -10,11 +10,7 @@ class SelectValueField extends ValueInstance {
 	private static $plural_name = 'Select Fields';
 
 	private static $db = array(
-		'Value'		=> 'Varchar(128)'
-	);
-
-	private static $has_many = array(
-		'Options'	=> 'OptionValueField'
+		'Value'				=> 'Varchar(128)'
 	);
 
 	public function getFieldTemplate()
@@ -34,29 +30,10 @@ class SelectValueField extends ValueInstance {
     	$field = DropdownField::create($this->Name, $this->Name, $data)
 					->setEmptyString('(select one)');
 
+		if ($this->Value) {
+			$field->setValue($this->Value);
+		}
 
     	return $field;
 	}
-
-	public function onBeforeWrite() {
-		parent::onBeforeWrite();
-
-		$this->Value = $this->Value;
-	}
-
-
-/*
-	public function getCMSFields()
-	{
-		$fields = parent::getCMSFields();
-
-		if ($this->exists()) {
-			$fields->addFieldToTab('Root.Main',
-				new GridField('Options', 'Option Fields', $this->Options())
-			);
-		}
-
-		return $fields;
-	}
-*/
 }
