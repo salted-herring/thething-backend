@@ -9,6 +9,7 @@ CustomField:
     - BooleanValueField: "boolean"
     - DateValueField: "date"
     - DecimalValueField: "decimal"
+    - GMapsValueField: "google map"
     - HTMLTextValueField: "html text"
     - HTMLTextAreaValueField: "html text area"
     - IntValueField: "integer"

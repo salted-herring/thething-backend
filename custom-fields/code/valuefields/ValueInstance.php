@@ -21,9 +21,8 @@ class ValueInstance extends DataObject
         'Value'
     );
 
-    public function cmsAdditions()
+    public function cmsAdditions($fields)
     {
-        return false;
     }
 
     /**
@@ -51,9 +50,14 @@ class ValueInstance extends DataObject
         $name = $this->Name;
 
         if ($realField->exists()) {
-            $name = $realField->Label ? $realField->Label : $realField->Name;
+            $name = $realField->Label ? $realField->Label : $realField->Title;
         }
 
         return $name;
+    }
+
+    public function getFieldValue()
+    {
+        return $this->Value;
     }
 }

@@ -46,7 +46,9 @@ class CustomSubmission extends DataObject
                 $type->FieldID = $f->ID;
             }
 
-            $fields->addFieldToTab('Root.Main', $type->getFieldTemplate());
+            $template = $type->getFieldTemplate();
+            $fields->addFieldToTab('Root.Main', $template);
+            $type->cmsAdditions($fields);
         }
 
         return $fields;

@@ -15,6 +15,7 @@ class TextValueField extends ValueInstance
 
     public function getFieldTemplate()
     {
+        $name = $this->getFieldLabel();
         $field = TextField::create($name);
 
         if ($this->Value) {

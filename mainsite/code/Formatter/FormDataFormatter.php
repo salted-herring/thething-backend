@@ -12,30 +12,32 @@ class FormDataFormatter implements IRestSerializeFormatter
         ];
 
         if ($data->Submissions() && $data->Submissions()->exists()) {
-			$submissions = array();
+            $submissions = array();
 
-			foreach ($data->Submissions() as $submission) {
-				$current = array(
-					'id'		=> $submission->ID,
-					'fields'	=> null
-				);
+            foreach ($data->Submissions() as $submission) {
+                $current = array(
+                    'id'        => $submission->ID,
+                    'fields'    => null
+                );
 
-				if ($submission->Fields()->count() > 0) {
-					$current['fields'] = array();
-				}
+                if ($submission->Fields()->count() > 0) {
+                    $current['fields'] = array();
+                }
 
-				foreach ($submission->Fields() as $field) {
-					$realField = $field->Field();
-					$current['fields'][$field->Name] = array(
-						'value'	=> $field->Value,
-						'label'	=> $realField ? $realField->Label : ''
-					);
-				}
+                foreach ($submission->Fields() as $field) {
+                    $realField = $field->Field();
 
-				$submissions[] = $current;
-			}
+                    $current['fields'][$field->Name] = array(
+                        'type'  => $field->ClassName,
+                        'value' => $field->getFieldValue(),
+                        'label' => $realField ? $realField->Label : ''
+                    );
+                }
 
-			$output['submissions'] = $submissions;
+                $submissions[] = $current;
+            }
+
+            $output['submissions'] = $submissions;
         }
 
         return $output;
