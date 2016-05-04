@@ -56,3 +56,8 @@ SeoConfig:
 #   CORSMaxAge: '1000'
 #   CORSAllowHeaders: 'Content-Type, Authorization, X-Requested-With'
 #   Owner: Member
+
+App:
+  ApiEndpoint: "api/v/1/app/"
+  AdditionalData:
+    - SelectValueField: Endpoint

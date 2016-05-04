@@ -21,9 +21,6 @@
 		<main class="container">
 			$Layout
 		</main>
-
-		$SessionID
-
 		<% include Footer %>
 		$getRequireJS
 	</body>

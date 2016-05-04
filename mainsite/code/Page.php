@@ -29,7 +29,6 @@ class Page_Controller extends ContentController {
 
 	public function init() {
 		parent::init();
-
 		// Note: you should use SS template require tags inside your templates 
 		// instead of putting Requirements calls here.  However these are 
 		// included so that our older themes still work
@@ -39,6 +38,14 @@ Requirements::themedCSS('reset');
 		Requirements::themedCSS('typography'); 
 		Requirements::themedCSS('form'); 
 */
+		
+		Requirements::combine_files(
+			'scripts.js',
+			array(
+				'themes/default/js/components/jquery/dist/jquery.min.js',
+				'themes/default/js/custom.scripts.js'
+			)
+		);
 	}
 	
 	protected function getSessionID() {

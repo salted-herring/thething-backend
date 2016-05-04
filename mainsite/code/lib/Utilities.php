@@ -4,7 +4,75 @@
  *
  * Generic utility functions
  * */
+
+class Utilities {
+	public static function sanitiseClassName($string) {
+   		$string = str_replace(' ', '-', strtolower($string));
+   		return preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+	}
+}
+
+class Debugger {
+	public static function inspect($obj, $die = true) {
+		Debug::dump($obj);
+		if ($die) die;
+	}
+	
+	public static function methods(&$obj) {
+		
+		if (!empty($obj)){
+			echo '<pre>';
+			print_r(get_class_methods($obj));
+			echo '</pre>';
+		}else{
+			echo 'object is empty';
+		}
+		
+		die;
+	}
+}
+
 class UtilityFunctions {
+	
+	public static function get_emails($groupCode) {
+		$group = DataObject::get_one('Group', "Code = '" . $groupCode . "'");
+		
+		if ($group) {
+			return $group->Members()->column('Email');
+		}
+		
+		return false;
+	}
+	
+	public static function valid_email($email) {
+		return filter_var($email, FILTER_VALIDATE_EMAIL);
+	}
+	
+	public static function member_exist($email) {
+		$member = DataObject::get_one("Member",  "Email = '".$email."'");
+		return !empty($member);
+	}
+	
+	public static function isBrowser() {
+		// Regular expression to match common browsers
+		$browserlist = '/(opera|aol|msie|firefox|chrome|konqueror|safari|netscape|navigator|mosaic|lynx|amaya|omniweb|avant|camino|flock|seamonkey|mozilla|gecko)+/i';
+		
+		$validBrowser = preg_match($browserlist, strtolower($_SERVER['HTTP_USER_AGENT'])) === 1;
+		
+		return $validBrowser;// && !empty($_SERVER['HTTP_REFERER']);
+	}
+	
+	public static function CreateTagSlug($Slug, $ID) {
+		$Slug = preg_replace('/[^A-Za-z0-9]+/','-', strtolower($Slug));
+		
+		$count = 2;
+		while(DataObject::get_one('Tag', "Slug = '" . $Slug ."' AND Tag.ID != " . $ID)) {
+			$Slug = preg_replace('/-[0-9]+$/', null, $Slug) . '-' . $count;
+            $count++;
+		}
+		
+		return $Slug;
+	}	
 	
 	/**
 	 * Take a string with new line feeds & create paragraphs.

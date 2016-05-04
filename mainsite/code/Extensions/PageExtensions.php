@@ -36,7 +36,7 @@
 		
 		public function getRequireJS() {
 			
-			if(Director::isDev()) {
+			/*if(Director::isDev()) {
 				$script = "<script src=\"" . $this->owner->ThemeDir() . "/js/lib/require.js\"></script>\n";
 				$script .= "<script>\n";
 				$script .= "require([\"" . $this->owner->ThemeDir() . "/js/dev.config\"], function (common) {";
@@ -51,7 +51,7 @@
 							. $this->owner->ThemeDir() . '/%s"></script>';
 
 				return sprintf($script, 'build/pagetypes/' . strtolower($this->owner->ClassName));
-			}
+			}*/
 		}
 		
 		public function getGACode() {
