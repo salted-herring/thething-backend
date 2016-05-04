@@ -32,3 +32,7 @@ SeoConfig:
     ErrorPage: false
     RedirectorPage: false
     VirtualPage: false
+App:
+  ApiEndpoint: "api/v/1/app/"
+  AdditionalData:
+    - SelectValueField: Endpoint

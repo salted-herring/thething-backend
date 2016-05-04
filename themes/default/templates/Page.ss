@@ -21,7 +21,6 @@
 		<main class="container">
 			$Layout
 		</main>
-		
 		<% include Footer %>
 		$getRequireJS
 	</body>

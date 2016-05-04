@@ -6,3 +6,5 @@ Director:
   rules:
     'api/v/1/test/$ID': 'TestModelController'
     'api/v/1/data/$ID': 'DataController'
+    'api/v/1/form/$ID': 'FormController'
+    'api/v/1/app/$ID': 'AppController'
