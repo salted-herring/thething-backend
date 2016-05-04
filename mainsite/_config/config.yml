@@ -1,6 +1,9 @@
 ---
 Name: mainsite
-After: 'framework/*','cms/*'
+After:
+  - 'framework/*'
+  - 'cms/*'
+  - 'silverstripe-rest-api/*'
 ---
 # YAML configuration for SilverStripe
 # See http://doc.silverstripe.org/framework/en/topics/configuration
@@ -32,3 +35,24 @@ SeoConfig:
     ErrorPage: false
     RedirectorPage: false
     VirtualPage: false
+
+#
+# API Authentication
+#
+# Injector:
+#   Authenticator:
+#     class: SaltedHerringTokenAuth
+#   ApiMemberAuthenticator:
+#     class: MemberAuthenticator
+#   SessionValidator:
+#     class: SessionValidator
+#   PermissionChecks:
+#     class: SilverstripePermission
+# SaltedHerringTokenAuth:
+#   DevToken: foobarbaz
+# DataController:
+#   CORSOrigin: '*'
+#   CORSMethods: 'GET, PUT, POST, DELETE, OPTIONS'
+#   CORSMaxAge: '1000'
+#   CORSAllowHeaders: 'Content-Type, Authorization, X-Requested-With'
+#   Owner: Member
