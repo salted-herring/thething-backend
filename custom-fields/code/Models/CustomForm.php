@@ -16,7 +16,6 @@ class CustomForm extends DataObject
         'Submissions'   => 'CustomSubmission'
     );
 
-
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -25,14 +24,7 @@ class CustomForm extends DataObject
         $fields->replaceField('URL', $url->performReadOnlyTransformation());
 
         if ($this->exists()) {
-            $absoluteEndpoint = Director::absoluteURL(Config::inst()->get('CustomField', 'ApiEndpoint') . $this->URL);
-
-            $endpoint = sprintf(
-                '<a href="%s?accept=json" target="_blank">%s</a>',
-                $absoluteEndpoint,
-                $absoluteEndpoint
-            );
-
+            $endpoint = $this->getEndpoint();
             $fields->addFieldToTab(
                 'Root.Main',
                 LiteralField::create('Endpoint', 'Endpoint: ' . $endpoint)
@@ -41,6 +33,21 @@ class CustomForm extends DataObject
 
         return $fields;
     }
+	
+	protected function getEndpoint() {
+		$absoluteEndpoint = Director::absoluteURL(Config::inst()->get($this->ClassName, 'ApiEndpoint') . $this->URL);
+		
+		return $this->linkEndpoint($absoluteEndpoint);
+	}
+	
+	protected function linkEndpoint($url) {
+		$endpoint = sprintf(
+			'<a href="%s?accept=json" target="_blank">%s</a>',
+			$url,
+			$url
+        );
+		return $endpoint;
+	}
 
     public function onBeforeWrite()
     {

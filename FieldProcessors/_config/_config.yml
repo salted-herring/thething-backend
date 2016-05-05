@@ -1,0 +1,8 @@
+---
+Name: field_processors
+After:
+  - 'framework/*'
+  - 'cms/*'
+  - 'custom_fields'
+---
+FieldProcessor:

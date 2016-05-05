@@ -19,3 +19,5 @@ CustomField:
   ApiEndpoint: "api/v/1/data/"
   AdditionalData:
     - SelectValueField: OptionValueField
+CustomForm:
+  ApiEndpoint: "api/v/1/data/"
