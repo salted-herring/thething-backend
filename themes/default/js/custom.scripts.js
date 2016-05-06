@@ -36,7 +36,6 @@
 			url,
 			{
 				accept: 'json',
-				access_token: 'foobarbaz',
 				get: 'structure'
 			},
 			
