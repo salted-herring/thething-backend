@@ -8,3 +8,4 @@ Director:
     'api/v/1/data/$ID': 'DataController'
     'api/v/1/form/$ID': 'FormController'
     'api/v/1/app/$ID': 'AppController'
+    'api/v/1/siteapp/$ID': 'SiteAppController'

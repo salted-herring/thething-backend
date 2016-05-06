@@ -7,7 +7,7 @@
 class AppController extends BaseRestController {
 
     private static $allowed_actions = array (
-        'get' => true,
+        'get' => true
     );
 
 	public function get($request) {
@@ -39,8 +39,9 @@ class AppController extends BaseRestController {
 			unset($params['url']);
 			unset($params['accept']);
 			
-			$output['app_name']	=	$app->AppName;
 			$output['app_id']	=	$app->ID;
+			$output['app_name']	=	$app->AppName;
+			$output['app_desc']	=	$app->AppDes;
 			$output['app_data']	=	$app->fetch($params);
 		}
         return $output;
