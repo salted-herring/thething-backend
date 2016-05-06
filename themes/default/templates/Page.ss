@@ -10,14 +10,14 @@
 		<meta name="viewport" content="width=device-width">
 
 		$getCSS
-		
+
 		<script src="$ThemeDir/js/lib/modernizr.min.js"></script>
-		
+
 		<% include GA %>
 	</head>
 	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %>">
 		<% include Header %>
-		
+
 		<main class="container">
 			$Layout
 		</main>
