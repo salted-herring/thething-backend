@@ -25,7 +25,7 @@
 				}
 			}
 		);
-		/*var url = '/api/v/1/siteapp/a8a623997a94fad5b7d25009df324c5d846b0a9efb224a7c4782c8c376b461cbc';
+		var url = '/api/v/1/siteapp/a8a623997a94fad5b7d25009df324c5d846b0a9efb224a7c4782c8c376b461cbc';
 		var nut = {
 			"departure": 1024768,
             "arrival": 1920960,
@@ -40,12 +40,10 @@
 			},
 			
 			function(data) {
-				shell = data.app_structure;
+				return;
+				var shell = data.app_structure;
 				for (var key in shell.fields) {
-					shell.fields[key] = {
-						type: shell.fields[key],
-						value: nut[key]
-					}
+					shell.fields[key].value = nut[key];
 				}
 				$.post(
 					url,
@@ -60,8 +58,7 @@
 				);
 			}
 			
-		);*/
-		
+		);
 
 	});
 	

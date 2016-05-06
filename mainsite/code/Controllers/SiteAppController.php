@@ -14,6 +14,7 @@ class SiteAppController extends BaseRestController {
 	public function post($request) {
 		$app		=	DataObject::get_one('SiteApp', array('AppKey' => $request->param('ID')));
 		$submission	=	$request->postVar('submission');
+		
 		if (!empty($submission)) {
 			$form_id = $submission['form_id'];
 			$fields = $submission['fields'];
@@ -32,10 +33,11 @@ class SiteAppController extends BaseRestController {
 				$field_id = $field_object->write();
 				$record->Fields()->add($field_id);
 			}
-			$record->write();
-			
+			$record_id = $record->write();
+			return array('success' => true, 'message' => 'data submitted', 'submission_id' => $record_id);
 		}
-		return $request->postVars();
+		
+		return array('success' => false, 'message' => 'invalid input');
 	}
 
 	public function get($request) {
@@ -56,6 +58,12 @@ class SiteAppController extends BaseRestController {
 			if (!empty($params['get']) && $params['get'] == 'structure') {
 				if (!empty($app->CustomFields())) {
 					$fields = $app->CustomFields()->map('Title','DataType')->toArray();
+					foreach ($fields as $key => &$value) {
+						$value = array(
+							'type'	=>	$value,
+							'value'	=>	null
+						);
+					}
 					$output['app_structure'] = array(
 						'form_id'	=>	$app->ID,
 						'fields'	=>	$fields
