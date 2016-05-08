@@ -104,6 +104,10 @@ function getLoc (callback) {
 }
 
 function initMap() {
+	document.ontouchmove = function(event){
+		event.preventDefault();
+	}
+	
 	var $ 			=	jQuery,
 		location	=	'',
 		duration	=	'',
