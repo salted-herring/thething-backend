@@ -10,6 +10,7 @@ CustomField:
     - DateValueField: "date"
     - DecimalValueField: "decimal"
     - GMapsValueField: "google map"
+    - GeolocationField: "geometry"
     - HTMLTextValueField: "html text"
     - HTMLTextAreaValueField: "html text area"
     - IntValueField: "integer"

@@ -61,3 +61,5 @@ App:
   ApiEndpoint: "api/v/1/app/"
 SiteApp:
   ApiEndpoint: "api/v/1/siteapp/"
+  AdditionalData:
+    - SelectValueField: OptionValueField

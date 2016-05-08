@@ -60,4 +60,5 @@ class ValueInstance extends DataObject
     {
         return $this->Value;
     }
+	
 }
