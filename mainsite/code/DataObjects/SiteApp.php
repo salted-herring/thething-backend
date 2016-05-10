@@ -12,9 +12,16 @@ class SiteApp extends CustomForm {
 	);
 	
 	public function fetch($params = array()) {
-		$data = array();
+		$meta = [
+			'count' => $this->Submissions()->count(),
+			'timestamp' => time()
+		];
+		$output = array(
+			'data' => FormDataFormatter::format($this),
+			'meta' => $meta
+		);
 		
-		return $data;
+		return $output;
 	}
 	
 	public function getTitle() {

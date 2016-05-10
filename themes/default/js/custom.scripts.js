@@ -26,37 +26,16 @@
 					}
 				}
 			);
-			var url = '/api/v/1/siteapp/a8a623997a94fad5b7d25009df324c5d846b0a9efb224a7c4782c8c376b461cbc';
-			var nut = {
-				"departure": 1024768,
-				"arrival": 1920960,
-				"departure-loc": "99,33",
-				"arrival-loc": "77,88"
-			};
+			var url = '/api/v/1/siteapp/a57e6f22ba8e2348f1631ccb37974c317f3da9d20365264433e9c89987179f04e';
+			
 			$.get(
 				url,
 				{
-					accept: 'json',
-					get: 'structure'
+					accept: 'json'
 				},
 				
 				function(data) {
-					return;
-					var shell = data.app_structure;
-					for (var key in shell.fields) {
-						shell.fields[key].value = nut[key];
-					}
-					$.post(
-						url,
-						{
-							accept: 'json',
-							access_token: 'foobarbaz',
-							submission: shell
-						},
-						function(data) {
-							console.log(data);
-						}
-					);
+					console.log(data);
 				}
 				
 			);	
