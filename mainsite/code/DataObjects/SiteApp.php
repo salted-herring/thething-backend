@@ -12,16 +12,12 @@ class SiteApp extends CustomForm {
 	);
 	
 	public function fetch($params = array()) {
-		$meta = [
-			'count' => $this->Submissions()->count(),
-			'timestamp' => time()
-		];
-		$output = array(
-			'data' => FormDataFormatter::format($this),
-			'meta' => $meta
-		);
 		
-		return $output;
+		if ($this->Submissions() && $this->Submissions()->exists()) {
+			return RelationDataFormmatter::format($this->Submissions());
+		}
+		
+		return array();
 	}
 	
 	public function getTitle() {

@@ -8,6 +8,7 @@ CustomField:
   Types:
     - BooleanValueField: "boolean"
     - DateValueField: "date"
+    - DatetimeValueField: "datetime"
     - DecimalValueField: "decimal"
     - GMapsValueField: "google map"
     - GeolocationField: "geometry"
