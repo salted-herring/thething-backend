@@ -18,7 +18,8 @@ class App extends CustomForm {
 		'key'			=>	'Varchar(64)',
 		'value'			=>	'Varchar(256)',
 		'map'			=>	'Text',
-		'UseRaw'			=>	'Boolean'
+		'UseRaw'			=>	'Boolean',
+		'UniqueField'	=>	'Varchar(100)'
 	);
 	
 	protected static $extensions = array(
@@ -32,6 +33,10 @@ class App extends CustomForm {
 	public static $summary_fields = array(
 		'AppName', 'AppKey'
 	);
+	
+	public function getTitle() {
+		return $this->title();
+	}
 	
 	public function title() {
 		return $this->AppName;
@@ -61,12 +66,19 @@ class App extends CustomForm {
 		
 		if (!$this->ID) {
 			$fields->removeByName('AppKey');
+			$fields->removeByName('SaveData');
 		}else{
 			$appname = $fields->fieldByName('Root.Main.AppName')->performReadonlyTransformation();
 			$public = $fields->fieldByName('Root.Main.AppKey')->performReadonlyTransformation();
 			$fields->addFieldToTab('Root.Main', $appname, 'AppDes');
 			$fields->addFieldToTab('Root.Main', $public, 'AppDes');
 		}
+		$fields->removeByName('UniqueField');
+		if ($this->exists()) {
+			$unique = DropdownField::create('UniqueField','Unique field', $this->CustomFields()->map('Title','Title'))->setEmptyString('- select one -');
+			$fields->addFieldToTab('Root.CustomFields', $unique);
+		}
+		
 		return $fields;
 	}
 	
@@ -75,6 +87,10 @@ class App extends CustomForm {
 		if (!$this->ID) {
 			if (DataObject::get_one('App', array('AppName'=>Utilities::sanitiseClassName($this->AppName)))) {
 				$result->error('App name is not available');
+			}
+		}else{
+			if ($this->SaveData && (!$this->CustomFields()->exists() || $this->CustomFields()->count() == 0)) {
+				$result->error('You have no field to contain the foreign data');
 			}
 		}
 		$this->extend('validate', $result);
@@ -91,20 +107,24 @@ class App extends CustomForm {
 		if (!$this->ID) {
 			$app = Utilities::sanitiseClassName($this->AppName);
 			$this->AppKey = $this->generate_key($app);
+			
+			if ($this->SaveData && !empty($this->UniqueField)) {
+				$this->doSaveData($data);
+			}
+			
 		}
 		parent::onBeforeWrite();
 	}
 	
 	public function fetch($params = array()) {
-		if (!empty($this->url)) {
-			$query = '';
+		if ($this->SaveData && $this->Submissions()->count() > 0) {
+			$data = RelationDataFormatter::format($this->Submissions());
 			
-			if (count($params) > 0) {
-				foreach ($params as $key => $value) {
-					$value = str_replace(' ', '+', $value);
-					$query .= '&' . $key . '=' . $value;
-				}
-			}
+			return $data;
+		}
+		
+		if (!empty($this->url)) {
+			$query = Utilities::paramStringify($params, '&');
 			
 			$data = $this->doFetch($query);
 			if (is_string($data)) {
@@ -115,6 +135,52 @@ class App extends CustomForm {
 		}
 		
 		return array();
+	}
+	
+	private function recordExists($item) {
+		$name = $this->UniqueField;
+		if (!empty($name)) {
+			$theField = $this->CustomFields()->filter(array('Title' => $name));
+			if ($theField->count() > 0) {
+				$class = $theField->first()->DataType;
+				$submissions = $this->Submissions();
+				foreach ($submissions as $submission) {
+					/*$fields = $class::get()->filter(array(
+									'Name'			=>	$name,
+									'SubmissionID'	=>	$submission->ID
+								));*/
+					$fields = $submission->Fields()->filter(array(
+									'Name'			=>	$name
+								));
+					foreach ($fields as $field) {
+						if ($field->Value == $item[$name]) {
+							return true;
+						}
+					}
+				}
+				
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	private function doSaveData($data) {
+		if (!empty($data)) {
+			foreach ($data as $item) {
+				if (!$this->recordExists($item)) {
+					$formSheet = $this->getStructure();
+					$formSheet = $formSheet['fields'];
+					foreach ($item as $field => $value) {
+						if (!empty($formSheet[$field])) {
+							$formSheet[$field]['value'] = $value;
+						}
+					}
+					$this->saveForeignData($formSheet);
+				}
+			}
+		}
 	}
 	
 	private function doFetch($query) {

@@ -12,11 +12,12 @@
 					if (data.app_data) {
 						data.app_data.forEach(function(o) {
 							$(o).each(function(index, element) {
-								$('body').append('<h2>' + element.title + '</h2>');
-								if (element.description) { $('body').append('<p>' + element.description + '</p>'); }
-								$('body').append('<p>URL: <a href="' + element.url + '" target="_blank">' + element.url + '</a></p>');
-								if (element.thumbnail && element.thumbnail.length > 0) {
-									$('body').append('<img src="' + element.thumbnail + '" />');
+								element = element.fields;
+								$('body').append('<h2>' + element.title.value + '</h2>');
+								if (element.description.value) { $('body').append('<p>' + element.description.value + '</p>'); }
+								$('body').append('<p>URL: <a href="' + element.url.value + '" target="_blank">' + element.url + '</a></p>');
+								if (element.thumbnail.value && element.thumbnail.value.length > 0) {
+									$('body').append('<img src="' + element.thumbnail.value + '" />');
 									$('body').append('<hr />');
 								}
 							});
@@ -31,7 +32,8 @@
 			$.get(
 				url,
 				{
-					accept: 'json'
+					accept: 'json',
+					get: 'structure'
 				},
 				
 				function(data) {

@@ -56,4 +56,42 @@ class CustomForm extends DataObject
         $filter = new URLSegmentFilter();
         $this->URL = $filter->filter($this->Name);
     }
+	
+	public function saveForeignData($fields) {
+		if (!empty($fields)) {
+			$record	 = new CustomSubmission();
+			$record->FormID = $this->ID;
+			foreach ($fields as $name => $struct) {
+				$field = $struct['type'];
+				$value = $struct['value'];
+				$field_object = new $field;
+				$field_object->Name = $name;
+				$field_object->Value = $value;
+				$field_id = $field_object->write();
+				$record->Fields()->add($field_id);
+			}
+			$record_id = $record->write();
+			return array('success' => true, 'message' => 'data submitted', 'submission_id' => $record_id);
+		}
+		
+		return array('success' => false, 'message' => 'missing field(s)');
+	}
+	
+	public function getStructure() {
+		if (!empty($this->CustomFields())) {
+			$fields = $this->CustomFields()->map('Title','DataType')->toArray();
+			foreach ($fields as $key => &$value) {
+				$value = array(
+					'type'	=>	$value,
+					'value'	=>	null
+				);
+			}
+			return array(
+						'form_id'	=>	$this->ID,
+						'fields'	=>	$fields
+					);
+		}
+		
+		return array();
+	}
 }

@@ -15,7 +15,6 @@ class AppController extends BaseRestController {
 	);
 
 	public function get($request) {
-		
 		$app		=	DataObject::get_one('App', array('AppKey' => $request->param('ID')));
 		$params		=	$request->getVars();
 		$output		=	array();
@@ -43,7 +42,7 @@ class AppController extends BaseRestController {
 			unset($params['url']);
 			unset($params['accept']);
 			
-			if ($result = $this->preFetch($app)) {
+			if ($result = $this->preFetch($app, $params)) {
 				return $result;
 			}
 			
@@ -51,7 +50,7 @@ class AppController extends BaseRestController {
 			$output['app_name']	=	$app->AppName;
 			$output['app_desc']	=	$app->AppDes;
 			$output['app_data']	=	$app->fetch($params);
-			$this->postFetch($app, $output);
+			$this->postFetch($app, $params, $output);
 		}
         return $output;
 		

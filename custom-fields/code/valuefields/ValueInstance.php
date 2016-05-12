@@ -9,7 +9,13 @@ class ValueInstance extends DataObject
     private static $db = array(
         'Name'          => 'Varchar(100)'
     );
-
+	
+	//protected static $indexes = array(
+//		'FieldIndex'	=> array(
+//			'type'	=> 'unique',
+//			'value'	=> '"ID","Name"'
+//		)
+//	);
 
     private static $has_one = array(
         'Submission'    => 'CustomSubmission',

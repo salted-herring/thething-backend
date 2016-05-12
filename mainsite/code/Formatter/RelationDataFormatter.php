@@ -1,6 +1,6 @@
 <?php
 
-class RelationDataFormmatter implements IRestSerializeFormatter
+class RelationDataFormatter implements IRestSerializeFormatter
 {
 
     public static function format($relation, $access=null, $fields=null)

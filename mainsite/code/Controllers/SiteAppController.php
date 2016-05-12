@@ -21,27 +21,14 @@ class SiteAppController extends BaseRestController {
 		
 		if (!empty($submission)) {
 			$form_id = $submission['form_id'];
-			$fields = $submission['fields'];
-			
-			
-			$form = DataObject::get_one('CustomForm', array('ID' => $form_id));
-			$record	 = new CustomSubmission();
-			$record->FormID = $form_id;
-			
-			foreach ($fields as $name => $struct) {
-				$field = $struct['type'];
-				$value = $struct['value'];
-				$field_object = new $field;
-				$field_object->Name = $name;
-				$field_object->Value = $value;
-				$field_id = $field_object->write();
-				$record->Fields()->add($field_id);
+			if ($form = DataObject::get_one('CustomForm', array('ID' => $form_id))) {
+				return $form->saveForeignData($submission['fields']);
 			}
-			$record_id = $record->write();
-			return array('success' => true, 'message' => 'data submitted', 'submission_id' => $record_id);
+			
+			return array('success' => false, 'message' => 'form doesn\'t exist');
 		}
 		
-		return array('success' => false, 'message' => 'invalid input');
+		return array('success' => false, 'message' => 'missing submission');
 	}
 
 	public function get($request) {
@@ -60,22 +47,7 @@ class SiteAppController extends BaseRestController {
 			$output['app_desc']	=	$app->AppDes;
 			
 			if (!empty($params['get']) && $params['get'] == 'structure') {
-				if (!empty($app->CustomFields())) {
-					$fields = $app->CustomFields()->map('Title','DataType')->toArray();
-					foreach ($fields as $key => &$value) {
-						$value = array(
-							'type'	=>	$value,
-							'value'	=>	null
-						);
-					}
-					$output['app_structure'] = array(
-						'form_id'	=>	$app->ID,
-						'fields'	=>	$fields
-					);
-				}else{
-					$output['app_structure'] = array();
-				}
-				
+				$output['app_structure'] = $app->getStructure();
 				return $output;
 			}
 			

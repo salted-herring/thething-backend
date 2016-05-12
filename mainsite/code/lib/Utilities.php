@@ -6,9 +6,35 @@
  * */
 
 class Utilities {
-	public static function sanitiseClassName($string) {
+	public static function sanitiseClassName($string, $replacement = '') {
    		$string = str_replace(' ', '-', strtolower($string));
-   		return preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+   		return preg_replace('/[^A-Za-z0-9\-]/', $replacement, $string);
+	}
+	
+	public static function params_to_cachekey($params){
+		$str = '';
+		if (count($params) > 0) {
+			foreach ($params as $name => $value) {
+				$value = self::sanitiseClassName($value);
+				$str .= $name . '__' . $value . '_';
+			}
+		
+			$str = '__' . rtrim($str, '_');
+		}
+		return $str;
+	}
+	
+	public static function paramStringify($params, $prefix = '') {
+		$str = '';
+		if (count($params) > 0) {
+			foreach ($params as $name => $value) {
+				$value = str_replace(' ', '+', $value);
+				$str .= $name . '=' . $value . '&';
+			}
+		
+			$str = $prefix . rtrim($str, '&');
+		}
+		return $str;
 	}
 }
 

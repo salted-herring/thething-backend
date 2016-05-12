@@ -19,7 +19,7 @@ class SiteApp extends CustomForm {
 	public function fetch($params = array()) {
 		
 		if ($this->Submissions() && $this->Submissions()->exists()) {
-			return RelationDataFormmatter::format($this->Submissions());
+			return RelationDataFormatter::format($this->Submissions());
 		}
 		
 		return array();

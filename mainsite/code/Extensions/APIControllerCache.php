@@ -7,10 +7,10 @@ class APIControllerCache extends DataExtension {
 		return empty($len) ? 604800 : ((int) $len);
 	}
 	
-	public function preFetch($app) {
-		
+	public function preFetch($app, $params) {
+		$query			=	Utilities::params_to_cachekey($params);
 		$cache			=	SS_Cache::factory($app->ClassName);
-		$cache_key		=	$app->ClassName . '_' . $app->ID;
+		$cache_key		=	$app->ClassName . '_' . $app->ID . $query;
 		$cached			=	$cache->load($cache_key);
 		
 		if (!empty($cached)) {
@@ -29,9 +29,10 @@ class APIControllerCache extends DataExtension {
 		return false;
 	}
 	
-	public function postFetch($app, $data) {
+	public function postFetch($app, $params, $data) {
+		$query			=	Utilities::params_to_cachekey($params);
 		$cache			=	SS_Cache::factory($app->ClassName);
-		$cache_key		=	$app->ClassName . '_' . $app->ID;
+		$cache_key		=	$app->ClassName . '_' . $app->ID . $query;
 		$cache_expiry	=	new DateTime();
 		$cache_expiry	=	$cache_expiry->modify('+' . $this->getLength($app) . ' seconds');
 		$cache_object	=	serialize(array(
