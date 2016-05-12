@@ -11,6 +11,10 @@ class SiteAppController extends BaseRestController {
         'get'	=>	true
     );
 	
+	private static $extensions = array(
+		'APIControllerCache'
+	);
+	
 	public function post($request) {
 		$app		=	DataObject::get_one('SiteApp', array('AppKey' => $request->param('ID')));
 		$submission	=	$request->postVar('submission');

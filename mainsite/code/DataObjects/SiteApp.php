@@ -11,6 +11,11 @@ class SiteApp extends CustomForm {
 		'AppName', 'AppKey'
 	);
 	
+	
+	protected static $extensions = array(
+		'APICache'
+	);
+	
 	public function fetch($params = array()) {
 		
 		if ($this->Submissions() && $this->Submissions()->exists()) {

@@ -11,15 +11,18 @@ class App extends CustomForm {
 		'AppKey'			=>	'Varchar(256)',
 		'AppSecret'		=>	'Varchar(256)',
 		'Domains'		=>	'Text',
-		//endpoint
+		//endpoint,
 		'SaveData'		=>	'Boolean',
-		'CacheLength'	=>	'Int',
 		'source'			=>	'Varchar(256)',
 		'url'			=>	'Varchar(256)',
 		'key'			=>	'Varchar(64)',
 		'value'			=>	'Varchar(256)',
 		'map'			=>	'Text',
 		'UseRaw'			=>	'Boolean'
+	);
+	
+	protected static $extensions = array(
+		'APICache'
 	);
 	
 	/*protected static $has_many = array(
