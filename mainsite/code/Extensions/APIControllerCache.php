@@ -22,7 +22,7 @@ class APIControllerCache extends DataExtension {
 				$cache->remove($cache_key);
 				return false;
 			}
-			
+			$cached['data']['cache'] = true;
 			return $cached['data'];
 		}
 		
