@@ -77,7 +77,6 @@ class CustomForm extends DataObject
 		return array('success' => false, 'message' => 'missing field(s)');
 	}
 
-/*
 	public function getStructure() {
 		if (!empty($this->CustomFields())) {
 			$fields = $this->CustomFields()->map('Title','DataType')->toArray();
@@ -95,5 +94,4 @@ class CustomForm extends DataObject
 
 		return array();
 	}
-*/
 }
