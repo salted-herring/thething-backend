@@ -380,12 +380,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/notthatbad/silverstripe-rest-api.git",
-                "reference": "993045af0df4945e204f2fbb7350ea895d8c9a6a"
+                "reference": "c7788e5a73b82d8e4cb22140928e357f5a063a6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/notthatbad/silverstripe-rest-api/zipball/993045af0df4945e204f2fbb7350ea895d8c9a6a",
-                "reference": "993045af0df4945e204f2fbb7350ea895d8c9a6a",
+                "url": "https://api.github.com/repos/notthatbad/silverstripe-rest-api/zipball/c7788e5a73b82d8e4cb22140928e357f5a063a6d",
+                "reference": "c7788e5a73b82d8e4cb22140928e357f5a063a6d",
                 "shasum": ""
             },
             "require": {
@@ -405,13 +405,13 @@
                 }
             ],
             "description": "REST api module for Silverstripe",
-            "homepage": "https://github.com/1blankz7/silverstripe-rest-api",
+            "homepage": "https://github.com/notthatbad/silverstripe-rest-api/releases",
             "keywords": [
                 "api",
                 "rest",
                 "silverstripe"
             ],
-            "time": "2016-02-21 17:19:11"
+            "time": "2016-05-25 19:22:31"
         },
         {
             "name": "silverstripe-australia/gridfieldextensions",
@@ -646,16 +646,16 @@
         },
         {
             "name": "silverstripe/lumberjack",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-lumberjack.git",
-                "reference": "aa2e67155d481c7c86b607a666632e595d72575b"
+                "reference": "861bdd7e4ec84e16296343b0958461ebd78110d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-lumberjack/zipball/aa2e67155d481c7c86b607a666632e595d72575b",
-                "reference": "aa2e67155d481c7c86b607a666632e595d72575b",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-lumberjack/zipball/861bdd7e4ec84e16296343b0958461ebd78110d0",
+                "reference": "861bdd7e4ec84e16296343b0958461ebd78110d0",
                 "shasum": ""
             },
             "require": {
@@ -676,7 +676,7 @@
                 }
             ],
             "description": "A module to make managing pages in a GridField easy without losing any of the functionality that you're used to in the CMS.",
-            "time": "2015-11-19 22:49:50"
+            "time": "2016-05-18 22:30:50"
         },
         {
             "name": "silverstripe/reports",
@@ -1049,20 +1049,23 @@
         },
         {
             "name": "phpunit/php-timer",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-timer.git",
-                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b"
+                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
-                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/38e9124049cf1a164f1e4537caf19c99bf1eb260",
+                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4|~5"
             },
             "type": "library",
             "autoload": {
@@ -1086,7 +1089,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2015-06-21 08:01:12"
+            "time": "2016-05-12 18:03:57"
         },
         {
             "name": "phpunit/php-token-stream",

@@ -6,7 +6,7 @@
 				'/api/v/1/app/9d01d99ac4b9a2a5f0344ca0465f2b3cf',
 				{
 					accept: 'json',
-					text: 'cat'
+					text: 'dog'
 				},
 				function(data) {
 					if (data.app_data) {

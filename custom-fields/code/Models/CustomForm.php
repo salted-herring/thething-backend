@@ -57,10 +57,17 @@ class CustomForm extends DataObject
         $this->URL = $filter->filter($this->Name);
     }
 	
-	public function saveForeignData($fields) {
+	public function saveForeignData($fields, $identifier = null, $params = null) {
 		if (!empty($fields)) {
 			$record	 = new CustomSubmission();
 			$record->FormID = $this->ID;
+			if (!empty($identifier)) {
+				$record->identifier = $identifier;
+			}
+			
+			if (!empty($params)) {
+				$record->params = $params;
+			}
 			foreach ($fields as $name => $struct) {
 				$field = $struct['type'];
 				$value = $struct['value'];

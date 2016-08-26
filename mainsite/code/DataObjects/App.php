@@ -75,7 +75,7 @@ class App extends CustomForm {
 		}
 		$fields->removeByName('UniqueField');
 		if ($this->exists()) {
-			$unique = DropdownField::create('UniqueField','Unique field', $this->CustomFields()->map('Title','Title'))->setEmptyString('- select one -');
+			$unique = DropdownField::create('UniqueField','Unique field', $this->CustomFields()->map('Title','Title'))->setEmptyString('- Select one -');
 			$fields->addFieldToTab('Root.CustomFields', $unique);
 		}
 		
@@ -107,17 +107,19 @@ class App extends CustomForm {
 		if (!$this->ID) {
 			$app = Utilities::sanitiseClassName($this->AppName);
 			$this->AppKey = $this->generate_key($app);
-			
-			if ($this->SaveData && !empty($this->UniqueField)) {
-				$this->doSaveData($data);
-			}
-			
 		}
 		parent::onBeforeWrite();
 	}
 	
 	public function fetch($params = array()) {
 		if ($this->SaveData && $this->Submissions()->count() > 0) {
+			
+			$submission = $this->Submissions();
+			if (count($params) > 0) {
+				$query = Utilities::paramStringify($params, '&');
+			}
+			
+			
 			$data = RelationDataFormatter::format($this->Submissions());
 			
 			return $data;
@@ -131,45 +133,32 @@ class App extends CustomForm {
 				$data = json_decode($data);
 			}
 			
+			if ($this->SaveData && !empty($this->UniqueField)) {
+				$this->doSaveData($data, $query);
+			}
+			
 			return $data;
 		}
 		
 		return array();
 	}
 	
-	private function recordExists($item) {
+	private function canSaveItem($item) {
 		$name = $this->UniqueField;
-		if (!empty($name)) {
-			$theField = $this->CustomFields()->filter(array('Title' => $name));
-			if ($theField->count() > 0) {
-				$class = $theField->first()->DataType;
-				$submissions = $this->Submissions();
-				foreach ($submissions as $submission) {
-					/*$fields = $class::get()->filter(array(
-									'Name'			=>	$name,
-									'SubmissionID'	=>	$submission->ID
-								));*/
-					$fields = $submission->Fields()->filter(array(
-									'Name'			=>	$name
-								));
-					foreach ($fields as $field) {
-						if ($field->Value == $item[$name]) {
-							return true;
-						}
-					}
-				}
-				
-				return false;
-			}
+		if (!empty($name) && !empty($item[$name])) {
+			
+			$key = md5($name . $item[$name]);
+			$submissions = $this->Submissions()->filter(array('identifiler',$key));
+			return $submission->count > 0 ? false : $key;
 		}
 		
-		return true;
+		return false;
 	}
 	
-	private function doSaveData($data) {
+	private function doSaveData($data, $query) {
 		if (!empty($data)) {
 			foreach ($data as $item) {
-				if (!$this->recordExists($item)) {
+				if ($identifier = $this->canSaveItem($item)) {
 					$formSheet = $this->getStructure();
 					$formSheet = $formSheet['fields'];
 					foreach ($item as $field => $value) {
@@ -177,7 +166,7 @@ class App extends CustomForm {
 							$formSheet[$field]['value'] = $value;
 						}
 					}
-					$this->saveForeignData($formSheet);
+					$this->saveForeignData($formSheet, $identifier, $query);
 				}
 			}
 		}

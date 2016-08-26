@@ -30,7 +30,7 @@ class FormDataFormatter implements IRestSerializeFormatter
                     $current['fields'][$field->Name] = array(
                         'type'  => $field->ClassName,
                         'value' => $field->getFieldValue(),
-                        'label' => $realField ? $realField->Label : ''
+                        'label' => ($realField && $realField->Label)? $realField->Label : $field->Name
                     );
                 }
 

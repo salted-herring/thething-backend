@@ -6,6 +6,12 @@
  */
 class CustomSubmission extends DataObject
 {
+	
+	private static $db = array(
+		'identifier'		=>	'Varchar(32)',
+		'params'			=>	'Varchar(2083)'
+	);
+	
     private static $has_one = array(
         'Form'          => 'CustomForm'
     );
@@ -22,6 +28,16 @@ class CustomSubmission extends DataObject
     private static $field_labels = array(
         'getSummary'    =>  'Summary'
     );
+	
+	public function onBeforeDelete() {
+		parent::onBeforeDelete();
+		if ($this->Fields() && $this->Fields()->exists()) {
+			$fields = $this->Fields();
+			foreach ($fields as $field) {
+				$field->delete();
+			}
+		}
+	}
 
 
     public function getCMSFields()
@@ -29,7 +45,8 @@ class CustomSubmission extends DataObject
         $fields = parent::getCMSFields();
 
         $fields->removeByName('Fields');
-
+		//$fields->removeByName('identifier');
+		//$fields->removeByName('params');
         $form = $this->Form();
 
         $formFields = $form->CustomFields();
