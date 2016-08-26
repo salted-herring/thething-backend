@@ -29,29 +29,30 @@ class Page_Controller extends ContentController {
 
 	public function init() {
 		parent::init();
-		// Note: you should use SS template require tags inside your templates 
-		// instead of putting Requirements calls here.  However these are 
+		// Note: you should use SS template require tags inside your templates
+		// instead of putting Requirements calls here.  However these are
 		// included so that our older themes still work
 		/*
 Requirements::themedCSS('reset');
-		Requirements::themedCSS('layout'); 
-		Requirements::themedCSS('typography'); 
-		Requirements::themedCSS('form'); 
+		Requirements::themedCSS('layout');
+		Requirements::themedCSS('typography');
+		Requirements::themedCSS('form');
 */
-		
+
 		Requirements::combine_files(
 			'scripts.js',
 			array(
+    			'themes/default/js/components/sprintf/dist/sprintf.min.js',
 				'themes/default/js/components/jquery/dist/jquery.min.js',
 				'themes/default/js/custom.scripts.js'
 			)
 		);
 	}
-	
+
 	protected function getSessionID() {
 		return session_id();
 	}
-	
+
 	protected function getHTTPProtocol() {
 		$protocol = 'http';
 		if (isset($_SERVER['SCRIPT_URI']) && substr($_SERVER['SCRIPT_URI'], 0, 5) == 'https') {
@@ -61,11 +62,11 @@ Requirements::themedCSS('reset');
 		}
 		return $protocol;
 	}
-	
+
 	protected function getCurrentPageURL() {
 		return $this->getHTTPProtocol().'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	}
-	
+
 	public function MetaTags($includeTitle = true) {
 		$tags = parent::MetaTags();
 		/*
@@ -73,7 +74,7 @@ if($includeTitle === true || $includeTitle == 'true') {
 			$tags = preg_replace('/(\<title\>.*\<\/title\>)/', "<title>" . $this->getTheTitle() . "</title>\n", $tags);
 		}
 */
-		
+
 		$charset = ContentNegotiator::get_encoding();
 		$tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
 		if($this->MetaKeywords) {
@@ -82,25 +83,25 @@ if($includeTitle === true || $includeTitle == 'true') {
 		if($this->MetaDescription) {
 			$tags .= "<meta name=\"description\" content=\"" . Convert::raw2att($this->MetaDescription) . "\" />\n";
 		}
-		if($this->ExtraMeta) { 
+		if($this->ExtraMeta) {
 			$tags .= $this->ExtraMeta . "\n";
-		} 
-		
+		}
+
 		if($this->URLSegment == 'home' && SiteConfig::current_site_config()->GoogleSiteVerificationCode) {
-			$tags .= '<meta name="google-site-verification" content="' 
+			$tags .= '<meta name="google-site-verification" content="'
 					. SiteConfig::current_site_config()->GoogleSiteVerificationCode . '" />\n';
 		}
-		
+
 		// prevent bots from spidering the site whilest in dev.
 		if(!Director::isLive()) {
 			$tags .= "<meta name=\"robots\" content=\"noindex, nofollow, noarchive\" />\n";
 		}
-		
+
 		$this->extend('MetaTags', $tags);
-		
+
 		return $tags;
 	}
-	
+
 	public function getTheTitle() {
 		return Convert::raw2xml(($this->MetaTitle) ? $this->MetaTitle : $this->Title);
 	}

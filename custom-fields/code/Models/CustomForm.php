@@ -33,13 +33,13 @@ class CustomForm extends DataObject
 
         return $fields;
     }
-	
+
 	protected function getEndpoint() {
 		$absoluteEndpoint = Director::absoluteURL(Config::inst()->get($this->ClassName, 'ApiEndpoint') . $this->URL);
-		
+
 		return $this->linkEndpoint($absoluteEndpoint);
 	}
-	
+
 	protected function linkEndpoint($url) {
 		$endpoint = sprintf(
 			'<a href="%s?accept=json" target="_blank">%s</a>',
@@ -58,6 +58,7 @@ class CustomForm extends DataObject
     }
 	
 	public function saveForeignData($fields, $identifier = null, $params = null) {
+
 		if (!empty($fields)) {
 			$record	 = new CustomSubmission();
 			$record->FormID = $this->ID;
@@ -80,10 +81,10 @@ class CustomForm extends DataObject
 			$record_id = $record->write();
 			return array('success' => true, 'message' => 'data submitted', 'submission_id' => $record_id);
 		}
-		
+
 		return array('success' => false, 'message' => 'missing field(s)');
 	}
-	
+
 	public function getStructure() {
 		if (!empty($this->CustomFields())) {
 			$fields = $this->CustomFields()->map('Title','DataType')->toArray();
@@ -98,7 +99,7 @@ class CustomForm extends DataObject
 						'fields'	=>	$fields
 					);
 		}
-		
+
 		return array();
 	}
 }
