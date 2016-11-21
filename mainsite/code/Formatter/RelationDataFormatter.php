@@ -1,4 +1,4 @@
-<?php
+<?php use Ntb\RestAPI\IRestSerializeFormatter;
 
 class RelationDataFormatter implements IRestSerializeFormatter
 {
@@ -28,7 +28,7 @@ class RelationDataFormatter implements IRestSerializeFormatter
 
 			$relationData[] = $current;
 		}
-		
+
 		return $relationData;
 	}
 }

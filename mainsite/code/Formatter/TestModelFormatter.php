@@ -1,4 +1,4 @@
-<?php
+<?php use Ntb\RestAPI\IRestSerializeFormatter;
 
 class TestModelFormatter implements IRestSerializeFormatter {
 
@@ -8,14 +8,14 @@ class TestModelFormatter implements IRestSerializeFormatter {
             'title' => $data->Title,
             'image' => null
         ];
-        
+
         if ($data->Image() && $data->Image()->exists()) {
             $output['image'] = array(
                 'id' => $data->Image()->ID,
                 'url' => $data->Image()->getAbsoluteURL()
             );
         }
-        
+
         return $output;
     }
 }
