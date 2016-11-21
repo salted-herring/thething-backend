@@ -1,4 +1,4 @@
-<?php
+<?php use Ntb\RestAPI\BaseRestController as BaseRestController;
 /**
  * @file AppController.php
  *
@@ -9,7 +9,7 @@ class AppController extends BaseRestController {
     private static $allowed_actions = array (
         'get' => true
     );
-	
+
 	private static $extensions = array(
 		'APIControllerCache'
 	);
@@ -18,9 +18,9 @@ class AppController extends BaseRestController {
 		$app		=	DataObject::get_one('App', array('AppKey' => $request->param('ID')));
 		$params		=	$request->getVars();
 		$output		=	array();
-		
+
 		if ($app) {
-			
+
 			// compare host against domain list
 			$match = false;
 			$origin = $request->getHeader('Host');
@@ -32,20 +32,20 @@ class AppController extends BaseRestController {
 					break;
 				}
 			}
-			
+
 			if (!$match) {
 				$err = $this->httpError(403, 'Host disallowed');
 				return $err;
 			}
-			
+
 			//remove unneccessary params
 			unset($params['url']);
 			unset($params['accept']);
-			
+
 			if ($result = $this->preFetch($app, $params)) {
 				return $result;
 			}
-			
+
 			$output['app_id']	=	$app->ID;
 			$output['app_name']	=	$app->AppName;
 			$output['app_desc']	=	$app->AppDes;
@@ -53,6 +53,6 @@ class AppController extends BaseRestController {
 			$this->postFetch($app, $params, $output);
 		}
         return $output;
-		
+
     }
 }

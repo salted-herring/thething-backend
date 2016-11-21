@@ -51,3 +51,4 @@ silverstripe-rest-api
 segment-field/
 .htaccess
 var/
+composer.lock

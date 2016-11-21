@@ -1,4 +1,4 @@
-<?php
+<?php use Ntb\RestAPI\BaseRestController as BaseRestController;
 /**
  * @file DataController.php
  *
